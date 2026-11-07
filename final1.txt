@@ -1,0 +1,414 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>The Ghost Ship - Mary Celeste | Animated Mystery</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;background:#04060c;overflow:hidden;font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif}
+#app{position:fixed;inset:0;display:flex;flex-direction:column}
+#view{flex:1;min-height:0;position:relative;overflow:hidden;background:radial-gradient(circle at 50% 42%,#0a1428 0%,#050914 58%,#030510 100%)}
+#stage{position:absolute;left:50%;top:50%;width:1080px;height:1920px;margin:-960px 0 0 -540px;transform-origin:50% 50%;background:#04060c}
+#sceneWrap{position:absolute;inset:0;will-change:transform,filter}
+#svg{position:absolute;left:0;top:0;width:1080px;height:1920px;display:block}
+#streaks{position:absolute;inset:0;pointer-events:none;opacity:0;background:repeating-linear-gradient(0deg,rgba(0,0,0,.11) 0 2px,transparent 2px 20px)}
+/* HUD */
+#banner{position:absolute;left:0;top:0;width:1080px;height:140px;background:linear-gradient(#e4232f,#8f0f17);color:#fff;display:flex;align-items:center}
+#banner::after{content:"";position:absolute;left:0;right:0;bottom:-10px;height:10px;background:repeating-linear-gradient(90deg,#e8b64a 0 30px,#0f1420 30px 60px)}
+#banner::before{content:"";position:absolute;left:0;right:0;top:0;height:50%;background:linear-gradient(rgba(255,255,255,.08),transparent)}
+#banner span{position:relative;font:900 60px/1 Impact,"Arial Black","Helvetica Neue",sans-serif;letter-spacing:3px;margin-left:34px}
+#sceneLabel{position:absolute;left:28px;top:172px;z-index:20;display:flex;align-items:center;gap:14px;color:#fff}
+#sceneLabel .num{background:#b6ff2e;color:#0b1a05;border-radius:30px;min-width:48px;height:46px;display:inline-flex;align-items:center;justify-content:center;font:900 30px/1 "Arial Black",sans-serif;padding:0 10px}
+#sceneLabel.chg{animation:slideR .45s cubic-bezier(.2,1.2,.4,1) both}
+#timeChip{position:absolute;right:28px;top:172px;z-index:20;height:62px;padding:0 24px;border-radius:40px;background:rgba(8,12,28,.85);color:#fff;font:800 30px/62px system-ui,sans-serif;border:2px solid rgba(255,255,255,.25)}
+#cap{position:absolute;left:0;top:1292px;width:1080px;height:330px;display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:16px 20px;pointer-events:none;z-index:15}
+/* [EDIT 1] kinetic caption motion: .w now animates in (translateY + rotation, scale 1.25->1, letter-spacing tighten, blur-in);
+   .w.d (the ! emphasis words) punch in at scale 1.7 with red glow + 3px shake; .w.out fades the word 0.2s before the line ends
+   (the engine's captions() adds .out - done in final part 3). */
+.w{display:inline-block;white-space:nowrap;font:900 210px/1 Impact,"Arial Black","Helvetica Neue",sans-serif;color:#fff;text-shadow:0 12px 0 #000,0 0 40px rgba(0,0,0,.7);transform:rotate(var(--rot,0deg));animation:wpop .26s cubic-bezier(.2,1.3,.4,1) backwards;transition:opacity .18s linear}
+.w.k{color:#b6ff2e;text-shadow:0 10px 0 #000,0 0 46px rgba(150,255,0,.85)}
+.w.d{color:#ff3b30;text-shadow:0 10px 0 #000,0 0 60px rgba(255,40,30,.95),0 0 120px rgba(255,20,20,.6);animation:wemph .55s cubic-bezier(.2,1.2,.4,1) backwards}
+.w.f{color:#cfeaff;text-shadow:0 10px 0 #000,0 0 46px rgba(120,200,255,.85)}
+.w.m{color:#ffd36b;text-shadow:0 10px 0 #000,0 0 46px rgba(255,190,70,.8)}
+.w.out{opacity:0}
+@keyframes wpop{0%{transform:translate3d(0,38px,0) rotate(calc(var(--rot,0deg) * 2.5)) scale(1.25);opacity:0;filter:blur(9px);letter-spacing:.09em}60%{opacity:1;filter:blur(0)}100%{transform:rotate(var(--rot,0deg)) scale(1);opacity:1;filter:blur(0);letter-spacing:0}}
+@keyframes wemph{0%{transform:translate3d(0,30px,0) rotate(var(--rot,0deg)) scale(1.95);opacity:0;filter:blur(10px)}16%{transform:translate3d(3px,0,0) rotate(var(--rot,0deg)) scale(1.7);opacity:1;filter:blur(0)}28%{transform:translate3d(-3px,2px,0) rotate(var(--rot,0deg)) scale(1.62)}40%{transform:translate3d(3px,-2px,0) rotate(var(--rot,0deg)) scale(1.5)}52%{transform:translate3d(-2px,2px,0) rotate(var(--rot,0deg)) scale(1.38)}100%{transform:rotate(var(--rot,0deg)) scale(1);opacity:1;filter:blur(0)}}
+#sub{position:absolute;left:50px;top:1672px;width:980px;text-align:center;z-index:20;font:800 47px/1.3 system-ui,sans-serif;color:#fff;text-shadow:0 3px 0 #000,0 0 10px #000}
+#sub i{font-style:normal;opacity:.62}
+#sub i.on{opacity:1;color:#ffe45e}
+#startOv{position:absolute;inset:0;z-index:50;background:rgba(2,4,10,.55);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:34px;cursor:pointer}
+#startOv .big{width:300px;height:300px;border-radius:50%;background:#b6ff2e;border:12px solid #000;display:flex;align-items:center;justify-content:center}
+#startOv .big::after{content:"";border-left:110px solid #0b1a05;border-top:70px solid transparent;border-bottom:70px solid transparent;margin-left:30px}
+#startOv h2{font:900 84px/1 Impact,"Arial Black",sans-serif;letter-spacing:4px;text-shadow:0 6px 0 #000}
+#startOv p{font:700 38px/1.3 system-ui,sans-serif;opacity:.85;text-align:center;max-width:820px}
+#stage.paused #svg *{animation-play-state:paused!important}
+/* controls */
+#controls{flex:0 0 auto;display:flex;align-items:center;gap:14px;padding:10px 16px;background:#0a0f1e}
+#btnPlay{width:46px;height:46px;border-radius:50%;border:0;background:#b6ff2e;color:#0b1a05;font-size:22px;cursor:pointer}
+#btnPlay:hover{filter:brightness(1.1)}
+/* [EDIT 2] mute + skip-intro buttons (M / S keys) */
+#btnMute,#btnSkip{flex:0 0 auto;height:34px;min-width:34px;padding:0 12px;border-radius:17px;border:1px solid #2c3a63;background:#121a33;color:#fff;font:700 15px/1 system-ui;cursor:pointer}
+#btnMute:hover,#btnSkip:hover{background:#1f2c52}
+#btnMute.on{background:#d7263d;border-color:#d7263d}
+#prog{position:relative;flex:1;height:16px;border-radius:10px;background:#1b2440;cursor:pointer;min-width:80px}
+#progFill{position:absolute;left:0;top:0;bottom:0;width:0;border-radius:10px;background:linear-gradient(90deg,#b6ff2e,#66a81f)}
+#prog .mk{position:absolute;top:-4px;bottom:-4px;width:3px;background:#fff;opacity:.55;border-radius:2px}
+#prog .mk.sp{background:#ffe45e;opacity:.9}
+#progKnob{position:absolute;top:50%;width:22px;height:22px;margin:-11px 0 0 -11px;border-radius:50%;background:#fff;border:4px solid #b6ff2e;box-shadow:0 2px 8px rgba(0,0,0,.5)}
+#tTxt{font:700 15px/1 ui-monospace,Menlo,Consolas,monospace;color:#9fb0d6;white-space:nowrap;flex:0 0 auto}
+#jumps{display:flex;gap:6px;flex:0 0 auto}
+#jumps button{height:34px;min-width:34px;padding:0 10px;border-radius:17px;border:1px solid #2c3a63;background:#121a33;color:#fff;font:700 15px/1 system-ui;cursor:pointer}
+#jumps button:hover{background:#1f2c52}
+#jumps button.ph{border-style:dashed;color:#8a97bd}
+#jumps button.on{background:#b6ff2e;color:#0b1a05;border-color:#b6ff2e}
+@media (max-width:640px){#jumps{display:none}}
+/* ===== keyframes (all seekable via Web Animations currentTime) ===== */
+@keyframes pop{0%{transform:scale(.6);opacity:0}60%{transform:scale(1.07);opacity:1}100%{transform:scale(1);opacity:1}}
+@keyframes popOut{0%{transform:scale(1);opacity:1}100%{transform:scale(.2);opacity:0}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@keyframes fadeOut{from{opacity:1}to{opacity:0}}
+@keyframes slideUp{from{transform:translateY(110px);opacity:0}to{transform:none;opacity:1}}
+@keyframes slideDown{from{transform:translateY(-110px);opacity:0}to{transform:none;opacity:1}}
+@keyframes slideL{from{transform:translateX(220px);opacity:0}to{transform:none;opacity:1}}
+@keyframes slideR{from{transform:translateX(-220px);opacity:0}to{transform:none;opacity:1}}
+@keyframes drift{from{transform:translate3d(0,0,0)}to{transform:translate3d(var(--dx,-30px),var(--dy,-20px),0)}}
+@keyframes bob{0%{transform:translateY(-9px) rotate(-.7deg)}100%{transform:translateY(9px) rotate(.7deg)}}
+@keyframes rock{0%{transform:rotate(-8deg)}100%{transform:rotate(8deg)}}
+@keyframes breathe{0%,100%{transform:scale(1,1)}50%{transform:scale(1.012,1.022)}}
+@keyframes headBob{0%,100%{transform:translateY(0) rotate(-1.5deg)}50%{transform:translateY(-6px) rotate(1.5deg)}}
+@keyframes billow{0%{transform:scaleX(.955)}100%{transform:scaleX(1.05)}}
+@keyframes flap{0%{transform:skewY(-7deg) scaleX(1)}100%{transform:skewY(9deg) scaleX(.86)}}
+@keyframes shake{0%,100%{transform:translate(0,0)}25%{transform:translate(-5px,3px)}50%{transform:translate(3px,-4px)}75%{transform:translate(-4px,-2px)}}
+@keyframes twinkle{0%,100%{opacity:.2}50%{opacity:1}}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes spinStep{0%{transform:rotate(0)}100%{transform:rotate(5deg)}}
+@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.1)}}
+@keyframes ping{0%{transform:scale(.2);opacity:.95}100%{transform:scale(2.6);opacity:0}}
+@keyframes sweat{0%{transform:translateY(-8px);opacity:0}20%{opacity:1}100%{transform:translateY(40px);opacity:0}}
+@keyframes dash{to{stroke-dashoffset:-72}}
+@keyframes draw{from{stroke-dashoffset:1}to{stroke-dashoffset:0}}
+@keyframes burst{0%{transform:scale(.1) rotate(-14deg);opacity:1}30%{transform:scale(1.15) rotate(3deg);opacity:1}100%{transform:scale(1) rotate(0);opacity:1}}
+@keyframes slam{0%{transform:scale(3.4) rotate(-14deg);opacity:0}50%{transform:scale(.9) rotate(-8deg);opacity:1}100%{transform:scale(1) rotate(0);opacity:1}}
+@keyframes rise{0%{transform:translateY(40px) scale(.5);opacity:0}20%{opacity:1}100%{transform:translateY(-20px) scale(1);opacity:1}}
+@keyframes mote{0%{transform:translate(0,0);opacity:0}18%{opacity:.85}100%{transform:translate(var(--mx,30px),var(--my,-80px));opacity:0}}
+@keyframes swing{0%{transform:rotate(-13deg)}100%{transform:rotate(13deg)}}
+@keyframes waveX{from{transform:translateX(0)}to{transform:translateX(var(--sh,-540px))}}
+@keyframes vigPulse{0%,100%{opacity:.12}50%{opacity:.85}}
+@keyframes visOn{from{opacity:0}to{opacity:1}}
+@keyframes visOff{from{opacity:1}to{opacity:0}}
+@keyframes ref{from{opacity:0}to{opacity:0}}
+@keyframes spark{0%{transform:scale(0) rotate(0)}50%{transform:scale(1) rotate(45deg)}100%{transform:scale(0) rotate(90deg)}}
+@keyframes blink{0%,91%,100%{transform:scaleY(1)}95%{transform:scaleY(.08)}}
+@keyframes flicker{0%,100%{opacity:1}42%{opacity:.82}50%{opacity:.5}58%{opacity:.92}}
+@keyframes cloud{from{transform:translateX(-50px)}to{transform:translateX(70px)}}
+@keyframes grow{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+@keyframes zoomSlow{from{transform:scale(1)}to{transform:scale(1.12)}}
+@keyframes steam{0%{transform:translateY(0) scaleX(1);opacity:0}25%{opacity:.7}100%{transform:translateY(-60px) scaleX(1.4);opacity:0}}
+@keyframes ghostFloat{0%{transform:translate(0,0)}100%{transform:translate(26px,-40px)}}
+@keyframes fogMove{from{transform:translateX(-120px)}to{transform:translateX(120px)}}
+@keyframes ticker{0%,100%{opacity:1}50%{opacity:.35}}
+@keyframes dingSwing{0%{transform:rotate(0)}12%{transform:rotate(17deg)}30%{transform:rotate(-13deg)}46%{transform:rotate(8deg)}62%{transform:rotate(-4deg)}100%{transform:rotate(0)}}
+@keyframes cta{0%,100%{transform:translateY(0)}50%{transform:translateY(22px)}}
+</style>
+</head>
+<body>
+<div id="app">
+<div id="view">
+<div id="stage" class="paused">
+<div id="sceneWrap">
+<svg id="svg" viewBox="0 0 1080 1920" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<radialGradient id="gVig" cx=".5" cy=".5" r=".75"><stop offset=".45" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".8"/></radialGradient>
+<radialGradient id="gVigRed" cx=".5" cy=".5" r=".75"><stop offset=".4" stop-color="#c8001a" stop-opacity="0"/><stop offset="1" stop-color="#c8001a" stop-opacity=".55"/></radialGradient>
+<radialGradient id="gVigBlue" cx=".5" cy=".5" r=".75"><stop offset=".4" stop-color="#0a3c9c" stop-opacity="0"/><stop offset="1" stop-color="#0a3c9c" stop-opacity=".55"/></radialGradient>
+<radialGradient id="gSun" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#ffd596" stop-opacity="1"/><stop offset="1" stop-color="#ffd596" stop-opacity="0"/></radialGradient>
+<radialGradient id="gGlow" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#fff" stop-opacity=".9"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient>
+<radialGradient id="gGlowG" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#b6ff2e" stop-opacity=".9"/><stop offset="1" stop-color="#b6ff2e" stop-opacity="0"/></radialGradient>
+<radialGradient id="gGlowY" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#ffd36b" stop-opacity=".9"/><stop offset="1" stop-color="#ffd36b" stop-opacity="0"/></radialGradient>
+<linearGradient id="gSail" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#f7edd3"/><stop offset="1" stop-color="#c9a36a"/></linearGradient>
+<linearGradient id="gShade" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#000" stop-opacity=".6"/><stop offset="1" stop-color="#000" stop-opacity="0"/></linearGradient>
+<linearGradient id="gFog" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#cfe9ee" stop-opacity=".8"/><stop offset="1" stop-color="#cfe9ee" stop-opacity="0"/></linearGradient>
+<linearGradient id="gParch" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f3e3b8"/><stop offset="1" stop-color="#c9a36a"/></linearGradient>
+</defs>
+<g id="cam">
+<g id="bg"></g><g id="mid"></g><g id="fg"></g><g id="lab"></g>
+</g>
+<g id="ov"></g>
+<rect width="1080" height="1920" fill="url(#gVig)" opacity=".55" pointer-events="none"/>
+</svg>
+</div>
+<div id="streaks"></div>
+<div id="banner"><span id="bannerTxt">THE GHOST SHIP - MARY CELESTE</span></div>
+<div id="sceneLabel"><span class="num" id="slNum">01</span><span id="slTxt">DECEMBER 1872 - ATLANTIC OCEAN</span></div>
+<div id="timeChip">0:00</div>
+<div id="cap"></div>
+<div id="sub"></div>
+<!-- [EDIT 3] start overlay mentions the M / S keys -->
+<div id="startOv"><div class="big"></div><h2>TAP TO PLAY</h2><p>Narration + synthesized sound effects. 111 seconds. Headphones recommended. (M = mute, S = skip intro)</p></div>
+</div>
+<div id="controls">
+<button id="btnPlay" title="Play / Pause (space)">&#9654;</button>
+<div id="prog"><div id="progFill"></div><div id="progKnob"></div></div>
+<div id="tTxt">0:00 / 1:51</div>
+<!-- [EDIT 2] mute + skip buttons -->
+<button id="btnMute" title="Mute (M)">&#128266;</button>
+<button id="btnSkip" title="Skip intro (S)">SKIP</button>
+<div id="jumps"></div>
+</div>
+</div>
+<script>
+(function(){
+'use strict';
+/* =====================================================================
+THE GHOST SHIP - MARY CELESTE  |  single-file animated video  |  FINAL BUILD
+Sections:  1 DATA  2 CLOCK/AUDIO  3 SFX  4 KIT  5 ART  6 SCENES  7 ENGINE  8 UI
+===================================================================== */
+/* ===== 1. SCRIPT DATA - EXACT sentence timings from script.txt ===== */
+const TOTAL=111.10, SPEECH_END=105.90;
+const L=(s,e,text,key,emo)=>({s,e,text,key:key||'',emo:emo||{}});
+/* [EDIT 4] LINES replaced wholesale with script.txt (26 sentences, forced-aligned timings).
+   key = neon key word (class k). emo = {word:'d'|'f'|'m'} colour classes.
+   The four "!" sentences carry their emphasis word as 'd' (red glow, scale 1.7, 3px shake):
+   says / there / hurry / alcohol. */
+const LINES=[
+// SCENE 1 - THE DISCOVERY (0.00-20.17)
+L(0.00,3.92,'The Dei Gratia cuts through the grey Atlantic.','Atlantic',{grey:'f'}),
+L(3.92,8.08,'A ship where no ship should be at all.','ship',{all:'d'}),
+L(8.08,12.06,'The brigantine Mary Celeste, sails slack, drifting.','drifting',{slack:'f'}),
+L(12.06,16.72,"Captain Morehouse stands at the rail. 'She's sailing herself,' he says!",'herself',{says:'d'}),
+L(16.72,20.17,"The Mary Celeste. No one's there.",'Celeste',{there:'f'}),
+// SCENE 2 - THE LOG & THE PUMP (20.17-43.00)
+L(20.17,23.92,'The log says nothing.','nothing',{log:'m'}),
+L(23.92,27.48,'Nothing for nine days.','nine',{days:'m'}),
+L(27.48,34.70,'The pump handle moves.','pump',{moves:'f'}),
+L(34.70,38.77,'Three and a half feet of water down below.','water',{three:'m',half:'m'}),
+L(38.77,43.00,'The sea is coming in, Captain.','Captain',{sea:'f'}),
+// SCENE 3 - THE LAST MEAL & THE LOST LIFEBOAT (43.00-66.00)
+L(43.00,46.89,'The mirror is still there!','mirror',{there:'d'}),
+L(46.89,50.00,'Breakfast, half-eaten.','Breakfast',{halfeaten:'m'}),
+L(50.00,54.08,"The crew's tea gone cold.",'cold',{tea:'m'}),
+L(54.08,58.10,'Nothing stolen. Nothing broken.','stolen',{broken:'f'}),
+L(58.10,62.10,'They had left the table in a hurry!','table',{hurry:'d'}),
+L(62.10,66.00,'One little boat, gone.','boat',{gone:'f'}),
+// SCENE 4 - THE CARGO & THE CAPTAIN'S PIPE (66.00-87.00)
+L(66.00,69.50,'Below decks, the cargo.','cargo',{below:'f'}),
+L(69.50,73.00,'Seventeen hundred barrels of alcohol!','barrels',{alcohol:'d'}),
+L(73.00,76.40,"The captain's pipe is still warm.",'pipe',{warm:'m'}),
+L(76.40,80.70,'Captain Benjamin Briggs, a man of God.','Briggs',{god:'m'}),
+L(80.70,84.30,'His wife Sarah.','Sarah',{wife:'m'}),
+L(84.30,87.00,'His little girl, Sophia.','Sophia',{girl:'m'}),
+// SCENE 5 - THE SILENCE & THE END CARD (87.00-105.90)
+L(87.00,92.00,'The stove is cold.','stove',{cold:'f'}),
+L(92.00,95.30,'No diary, no suicide note.','diary',{suicide:'f'}),
+L(95.30,100.62,'No bodies. No struggle.','bodies',{struggle:'f'}),
+L(100.62,105.90,'What happened to the Mary Celeste?','happened',{celeste:'m'}),
+];
+const norm=w=>w.toLowerCase().replace(/[^a-z0-9]/g,'');
+/* word-by-word chunks: time inside the sentence window is split proportionally
+to word length, with extra weight for punctuation pauses. Tiny words merge with the next word. */
+LINES.forEach(line=>{
+const words=line.text.split(/\s+/); line.words=words;
+const wt=words.map(w=>{let n=norm(w).length+1.6; if(/\.\.\.$|…$/.test(w)) n+=6; else if(/[.?!]$/.test(w)) n+=2.4; else if(/,$/.test(w)) n+=1; else if(/:$/.test(w)) n+=.8; return n;});
+const ch=[]; let i=0;
+while(i<words.length){ let j=i; while(j<words.length-1&&norm(words[j]).length<=2&&!/[.?!,]$/.test(words[j])) j++; ch.push({i0:i,i1:j}); i=j+1; }
+const tot=wt.reduce((a,b)=>a+b,0), dur=line.e-line.s; let acc=0, keyDone=false;
+ch.forEach(c=>{
+let w=0; for(let k=c.i0;k<=c.i1;k++) w+=wt[k];
+c.t0=line.s+acc/tot*dur; acc+=w; c.t1=line.s+acc/tot*dur;
+c.text=words.slice(c.i0,c.i1+1).join(' '); c.cls='';
+for(let k=c.i0;k<=c.i1;k++){ if(!keyDone&&norm(words[k])===norm(line.key)){c.cls='k';keyDone=true;} }
+/* [EDIT 5] emphasis (!) words win over the neon key colour, so they always get the red punch-in */
+for(let k=c.i0;k<=c.i1;k++){ if(line.emo[norm(words[k])]==='d'){c.cls='d';break;} }
+if(!c.cls) for(let k=c.i0;k<=c.i1;k++){ const e=line.emo[norm(words[k])]; if(e){c.cls=e;break;} }
+});
+line.chunks=ch;
+});
+/* ===== 2. CLOCK / AUDIO (narration.mp3 drives the timeline) ===== */
+const $=s=>document.querySelector(s);
+const SRCS=['narration.mp3','https://raw.githubusercontent.com/pixelflixiptv-gif/video/main/narration.mp3'];
+const audio=new Audio(); audio.preload='auto'; let srcTry=0, audioOK=true;
+audio.src=SRCS[0];
+audio.addEventListener('error',()=>{
+if(srcTry<SRCS.length-1){ srcTry++; audio.src=SRCS[srcTry]; audio.load(); if(playing) audio.play().catch(()=>{audioOK=false;}); }
+else { audioOK=false; const n=$('#sub'); console.warn('narration.mp3 unavailable - running silent timeline'); }
+});
+let playing=false, cur=0, t0=0, wall0=0, prevT=0;
+let audioNoSeek=false;
+const audioActive=()=>audioOK&&!audioNoSeek&&!audio.paused&&!audio.ended;
+audio.addEventListener('ended',()=>{ t0=Math.min(audio.duration||TOTAL,TOTAL); cur=t0; wall0=performance.now(); });
+/* ===== 3. WEBAUDIO SFX ENGINE (everything synthesized, mixed LOW) ===== */
+const SFX=(function(){
+let ctx=null,master=null,white=null,brown=null,wavesOn=false;
+let muted=false;                                   /* [EDIT 6] mute flag */
+const MASTER_VOL=.7;                               /* [EDIT 7] master volume 0.5 -> 0.7 */
+const rn=(a,b)=>a+Math.random()*(b-a);
+function init(){
+if(ctx) return true;
+const AC=window.AudioContext||window.webkitAudioContext; if(!AC) return false;
+ctx=new AC(); master=ctx.createGain(); master.gain.value=muted?0:MASTER_VOL;   /* [EDIT 7] */
+const comp=ctx.createDynamicsCompressor(); master.connect(comp); comp.connect(ctx.destination);
+const len=ctx.sampleRate*3;
+white=ctx.createBuffer(1,len,ctx.sampleRate); brown=ctx.createBuffer(1,len,ctx.sampleRate);
+const dw=white.getChannelData(0), db=brown.getChannelData(0); let last=0;
+for(let i=0;i<len;i++){ const w=Math.random()*2-1; dw[i]=w; last=(last+.02*w)/1.02; db[i]=last*3.5; }
+return true;
+}
+const nsrc=(buf,loop)=>{const s=ctx.createBufferSource(); s.buffer=buf; s.loop=!!loop; return s;};
+const biq=(type,f,q)=>{const b=ctx.createBiquadFilter(); b.type=type; b.frequency.value=f; if(q!=null) b.Q.value=q; return b;};
+const gain=v=>{const g=ctx.createGain(); g.gain.value=v; return g;};
+const osc=(type,f)=>{const o=ctx.createOscillator(); o.type=type; o.frequency.value=f; return o;};
+const ok=()=>ctx&&ctx.state==='running';
+/* ocean waves: slow filtered-noise swells under the whole video, very low */
+function startWaves(){
+if(wavesOn||!ctx) return; wavesOn=true; const t=ctx.currentTime;
+const s=nsrc(brown,true), lp=biq('lowpass',430,.7), g=gain(.085);
+const lfo=osc('sine',.11), lg=gain(.055); lfo.connect(lg); lg.connect(g.gain);
+s.connect(lp); lp.connect(g); g.connect(master); s.start(t); lfo.start(t);
+const s2=nsrc(white,true), bp=biq('bandpass',1500,.5), g2=gain(.012);
+const lfo2=osc('sine',.11), lg2=gain(.011); lfo2.connect(lg2); lg2.connect(g2.gain);
+s2.connect(bp); bp.connect(g2); g2.connect(master); s2.start(t); lfo2.start(t+1.4);
+}
+const V={
+creak(v=1){ const t=ctx.currentTime, o=osc('sawtooth',100), f0=rn(80,125);
+o.frequency.setValueAtTime(f0,t); for(let i=1;i<9;i++) o.frequency.linearRampToValueAtTime(f0*rn(.8,1.55),t+i*.11);
+const bp=biq('bandpass',rn(520,900),9), am=gain(.5), lfo=osc('square',rn(16,30)), lg=gain(.5);
+lfo.connect(lg); lg.connect(am.gain);
+const out=gain(0); out.gain.setValueAtTime(0,t); out.gain.linearRampToValueAtTime(.085*v,t+.15); out.gain.linearRampToValueAtTime(.05*v,t+.6); out.gain.linearRampToValueAtTime(0,t+1.05);
+o.connect(bp); bp.connect(am); am.connect(out); out.connect(master); o.start(t); lfo.start(t); o.stop(t+1.1); lfo.stop(t+1.1); },
+bell(v=1){ const t=ctx.currentTime, out=gain(.0001); out.connect(master);
+out.gain.setValueAtTime(.0001,t); out.gain.exponentialRampToValueAtTime(.16*v,t+.004);
+[[1,1,3.2],[2.01,.55,2.3],[2.76,.5,1.7],[4.07,.25,1.1],[5.43,.14,.7]].forEach(p=>{
+const o=osc('sine',640*p[0]), g=gain(p[1]*.5); g.gain.setValueAtTime(p[1]*.5,t); g.gain.exponentialRampToValueAtTime(.0001,t+p[2]);
+o.connect(g); g.connect(out); o.start(t); o.stop(t+p[2]+.1); });
+out.gain.exponentialRampToValueAtTime(.0001,t+3.3);
+const n=nsrc(white,false), hp=biq('highpass',3000), ng=gain(.05); ng.gain.setValueAtTime(.05,t); ng.gain.exponentialRampToValueAtTime(.0001,t+.05);
+n.connect(hp); hp.connect(ng); ng.connect(master); n.start(t); n.stop(t+.1); },
+wind(v=1,dur=3){ const t=ctx.currentTime, n=nsrc(white,true), bp=biq('bandpass',400,1.1), g=gain(0);
+bp.frequency.setValueAtTime(380,t); bp.frequency.linearRampToValueAtTime(1100,t+dur*.5); bp.frequency.linearRampToValueAtTime(450,t+dur);
+g.gain.setValueAtTime(0,t); g.gain.linearRampToValueAtTime(.075*v,t+dur*.45); g.gain.linearRampToValueAtTime(0,t+dur);
+const lfo=osc('sine',5.5), lg=gain(.012*v); lfo.connect(lg); lg.connect(g.gain);
+n.connect(bp); bp.connect(g); g.connect(master); n.start(t); lfo.start(t); n.stop(t+dur+.1); lfo.stop(t+dur+.1); },
+whoosh(v=1){ const t=ctx.currentTime, n=nsrc(white,true), bp=biq('bandpass',300,1.4), g=gain(0);
+bp.frequency.setValueAtTime(300,t); bp.frequency.exponentialRampToValueAtTime(3800,t+.3);
+g.gain.setValueAtTime(0,t); g.gain.linearRampToValueAtTime(.12*v,t+.12); g.gain.linearRampToValueAtTime(0,t+.34);
+n.connect(bp); bp.connect(g); g.connect(master); n.start(t); n.stop(t+.4); },
+thud(v=1){ const t=ctx.currentTime, o=osc('sine',150), g=gain(0);
+o.frequency.setValueAtTime(150,t); o.frequency.exponentialRampToValueAtTime(42,t+.22);
+g.gain.setValueAtTime(.0001,t); g.gain.exponentialRampToValueAtTime(.3*v,t+.01); g.gain.exponentialRampToValueAtTime(.0001,t+.3);
+o.connect(g); g.connect(master); o.start(t); o.stop(t+.35);
+const n=nsrc(white,false), lp=biq('lowpass',900), ng=gain(.1*v); ng.gain.setValueAtTime(.1*v,t); ng.gain.exponentialRampToValueAtTime(.0001,t+.12);
+n.connect(lp); lp.connect(ng); ng.connect(master); n.start(t); n.stop(t+.12); },
+sparkle(v=1){ const t=ctx.currentTime; [1318,1760,2093,2637].forEach((f,i)=>{ const o=osc('sine',f), g=gain(0), s=t+i*.07;
+g.gain.setValueAtTime(0,s); g.gain.linearRampToValueAtTime(.05*v,s+.01); g.gain.exponentialRampToValueAtTime(.0001,s+.45);
+o.connect(g); g.connect(master); o.start(s); o.stop(s+.5); }); },
+sting(v=1){ const t=ctx.currentTime, g=gain(0), lp=biq('lowpass',700,1);
+[220,233,330].forEach(f=>{ const o=osc('sawtooth',f); o.connect(lp); o.start(t); o.stop(t+1.1); });
+g.gain.setValueAtTime(0,t); g.gain.linearRampToValueAtTime(.075*v,t+.04); g.gain.exponentialRampToValueAtTime(.0001,t+1.1);
+lp.connect(g); g.connect(master); },
+knock(v=1){ [0,.18].forEach(d=>{ const t=ctx.currentTime+d, o=osc('triangle',210), g=gain(0);
+o.frequency.setValueAtTime(210,t); o.frequency.exponentialRampToValueAtTime(90,t+.09);
+g.gain.setValueAtTime(.0001,t); g.gain.exponentialRampToValueAtTime(.2*v,t+.005); g.gain.exponentialRampToValueAtTime(.0001,t+.18);
+o.connect(g); g.connect(master); o.start(t); o.stop(t+.2); }); },
+splash(v=1){ const t=ctx.currentTime, n=nsrc(white,true), bp=biq('bandpass',1300,.7), g=gain(0);
+g.gain.setValueAtTime(0,t); g.gain.linearRampToValueAtTime(.06*v,t+.05); g.gain.exponentialRampToValueAtTime(.0001,t+.7);
+n.connect(bp); bp.connect(g); g.connect(master); n.start(t); n.stop(t+.7); },
+ping(v=1){ const t=ctx.currentTime, o=osc('sine',980), g=gain(0);
+g.gain.setValueAtTime(0,t); g.gain.linearRampToValueAtTime(.08*v,t+.01); g.gain.exponentialRampToValueAtTime(.0001,t+.9);
+o.connect(g); g.connect(master); o.start(t); o.stop(t+1); },
+gasp(v=1){ const t=ctx.currentTime, n=nsrc(white,true), bp=biq('bandpass',900,2), g=gain(0);
+bp.frequency.setValueAtTime(800,t); bp.frequency.linearRampToValueAtTime(2200,t+.32);
+g.gain.setValueAtTime(0,t); g.gain.linearRampToValueAtTime(.09*v,t+.28); g.gain.linearRampToValueAtTime(0,t+.45);
+n.connect(bp); bp.connect(g); g.connect(master); n.start(t); n.stop(t+.45); },
+riser(v=1,dur=2){ const t=ctx.currentTime, o=osc('triangle',180), g=gain(0);
+o.frequency.setValueAtTime(180,t); o.frequency.exponentialRampToValueAtTime(900,t+dur);
+g.gain.setValueAtTime(0,t); g.gain.linearRampToValueAtTime(.035*v,t+dur*.9); g.gain.linearRampToValueAtTime(0,t+dur);
+o.connect(g); g.connect(master); o.start(t); o.stop(t+dur+.1); },
+drone(v=1,dur=3){ const t=ctx.currentTime, o=osc('sine',55), g=gain(0), o2=osc('sine',58.5);
+g.gain.setValueAtTime(0,t); g.gain.linearRampToValueAtTime(.09*v,t+dur*.4); g.gain.linearRampToValueAtTime(0,t+dur);
+o.connect(g); o2.connect(g); g.connect(master); o.start(t); o2.start(t); o.stop(t+dur+.1); o2.stop(t+dur+.1); },
+/* ---------- [EDIT 8] NEW VOICES required by prompt.txt: thunder, woodKnock, whisper, heartbeat, drum, glass, candle ---------- */
+thunder(v=1){ const t=ctx.currentTime, n=nsrc(brown,true), lp=biq('lowpass',700,.8), g=gain(0);
+lp.frequency.setValueAtTime(700,t); lp.frequency.exponentialRampToValueAtTime(80,t+2.6);
+g.gain.setValueAtTime(0,t); g.gain.linearRampToValueAtTime(.9*v,t+.05); g.gain.linearRampToValueAtTime(.45*v,t+.6); g.gain.exponentialRampToValueAtTime(.0001,t+2.8);
+n.connect(lp); lp.connect(g); g.connect(master); n.start(t); n.stop(t+2.9);
+const c=nsrc(white,false), hp=biq('highpass',1800), cg=gain(.09*v); cg.gain.setValueAtTime(.09*v,t); cg.gain.exponentialRampToValueAtTime(.0001,t+.25);
+c.connect(hp); hp.connect(cg); cg.connect(master); c.start(t); c.stop(t+.3); },
+woodKnock(v=1){ [0,.23,.46].forEach((d,i)=>{ const t=ctx.currentTime+d, f=i===2?130:170, o=osc('sine',f), g=gain(0);
+o.frequency.setValueAtTime(f,t); o.frequency.exponentialRampToValueAtTime(60,t+.07);
+g.gain.setValueAtTime(.0001,t); g.gain.exponentialRampToValueAtTime(.34*v,t+.004); g.gain.exponentialRampToValueAtTime(.0001,t+.14);
+o.connect(g); g.connect(master); o.start(t); o.stop(t+.16);
+const n=nsrc(white,false), bp=biq('bandpass',1100,1.2), ng=gain(.07*v); ng.gain.setValueAtTime(.07*v,t); ng.gain.exponentialRampToValueAtTime(.0001,t+.03);
+n.connect(bp); bp.connect(ng); ng.connect(master); n.start(t); n.stop(t+.04); }); },
+whisper(v=1){ const t=ctx.currentTime, dur=1.7, n=nsrc(white,true), g=gain(0), b1=biq('bandpass',2400,4), b2=biq('bandpass',4200,3);
+b1.frequency.setValueAtTime(2000,t); b1.frequency.linearRampToValueAtTime(3200,t+dur*.5); b1.frequency.linearRampToValueAtTime(2200,t+dur);
+g.gain.setValueAtTime(0,t); g.gain.linearRampToValueAtTime(.4*v,t+.35); g.gain.linearRampToValueAtTime(.2*v,t+.9); g.gain.linearRampToValueAtTime(.35*v,t+1.2); g.gain.linearRampToValueAtTime(0,t+dur);
+const lfo=osc('sine',7), lg=gain(.08*v); lfo.connect(lg); lg.connect(g.gain);
+n.connect(b1); n.connect(b2); b1.connect(g); b2.connect(g); g.connect(master);
+n.start(t); lfo.start(t); n.stop(t+dur+.1); lfo.stop(t+dur+.1); },
+heartbeat(v=1){ [0,.3].forEach((d,i)=>{ const t=ctx.currentTime+d, f=i?52:64, o=osc('sine',f), g=gain(0);
+o.frequency.setValueAtTime(f,t); o.frequency.exponentialRampToValueAtTime(34,t+.18);
+g.gain.setValueAtTime(.0001,t); g.gain.exponentialRampToValueAtTime((i?.28:.4)*v,t+.02); g.gain.exponentialRampToValueAtTime(.0001,t+.26);
+o.connect(g); g.connect(master); o.start(t); o.stop(t+.3); }); },
+drum(v=1){ const t=ctx.currentTime, o=osc('sine',130), g=gain(0);
+o.frequency.setValueAtTime(130,t); o.frequency.exponentialRampToValueAtTime(44,t+.35);
+g.gain.setValueAtTime(.0001,t); g.gain.exponentialRampToValueAtTime(.55*v,t+.008); g.gain.exponentialRampToValueAtTime(.0001,t+.9);
+o.connect(g); g.connect(master); o.start(t); o.stop(t+.95);
+const n=nsrc(white,false), lp=biq('lowpass',1400), ng=gain(.12*v); ng.gain.setValueAtTime(.12*v,t); ng.gain.exponentialRampToValueAtTime(.0001,t+.1);
+n.connect(lp); lp.connect(ng); ng.connect(master); n.start(t); n.stop(t+.12); },
+glass(v=1){ const t=ctx.currentTime; [2349,3136,4186,5588].forEach((f,i)=>{ const o=osc('sine',f*(1+i*.003)), g=gain(0), s=t+i*.012;
+g.gain.setValueAtTime(0,s); g.gain.linearRampToValueAtTime(.05*v,s+.003); g.gain.exponentialRampToValueAtTime(.0001,s+.9-i*.12);
+o.connect(g); g.connect(master); o.start(s); o.stop(s+1); });
+const n=nsrc(white,false), hp=biq('highpass',5200), ng=gain(.09*v); ng.gain.setValueAtTime(.09*v,t); ng.gain.exponentialRampToValueAtTime(.0001,t+.22);
+n.connect(hp); hp.connect(ng); ng.connect(master); n.start(t); n.stop(t+.25); },
+candle(v=1){ const t=ctx.currentTime, n=nsrc(white,true), bp=biq('bandpass',1200,.9), g=gain(0);
+bp.frequency.setValueAtTime(1200,t); bp.frequency.linearRampToValueAtTime(2400,t+.3);
+g.gain.setValueAtTime(0,t); g.gain.linearRampToValueAtTime(.12*v,t+.04); g.gain.exponentialRampToValueAtTime(.0001,t+.5);
+n.connect(bp); bp.connect(g); g.connect(master); n.start(t); n.stop(t+.55);
+[.1,.22,.31].forEach(d=>{ const s=t+d, c=nsrc(white,false), hp=biq('highpass',3500), cg=gain(.06*v);
+cg.gain.setValueAtTime(.06*v,s); cg.gain.exponentialRampToValueAtTime(.0001,s+.015);
+c.connect(hp); hp.connect(cg); cg.connect(master); c.start(s); c.stop(s+.02); }); }
+};
+return {
+init, ok,
+resume(){ if(!init()) return; ctx.resume&&ctx.resume(); startWaves(); },
+suspend(){ if(ctx&&ctx.state==='running') ctx.suspend(); },
+play(name,v,x){ if(!ok()||!V[name]) return; try{ V[name](v==null?1:v,x); }catch(e){} },
+setMute(m){ muted=!!m; if(master) master.gain.value=muted?0:MASTER_VOL; },   /* [EDIT 6] */
+names:Object.keys(V)
+};
+})();
+/* [EDIT 6] mute: silences SFX + narration; button + M key (S key / skip handled in final part 4) */
+let muted=false;
+function setMuted(m){
+muted=!!m; audio.muted=muted; SFX.setMute(muted);
+const mb=$('#btnMute'); if(mb){ mb.textContent=muted?'\u{1F507}':'\u{1F50A}'; mb.classList.toggle('on',muted); }
+}
+const toggleMute=()=>setMuted(!muted);
+$('#btnMute').addEventListener('click',function(){ toggleMute(); this.blur(); });
+$('#btnSkip').addEventListener('click',function(){ this.blur(); });   /* real handler bound in final part 4 */
+window.addEventListener('keydown',e=>{ if(e.code==='KeyM'&&!e.repeat) toggleMute(); });
+/* ===== 4. KIT - svg helpers, effects library, hero character, face library ===== */
+const INK='#14202b', TEAL='#18a5a3', PANTS='#2a2f45';
+let seed=1; const rnd=()=>{seed=(seed*16807)%2147483647;return (seed-1)/2147483646;}; const rr=(a,b)=>a+rnd()*(b-a);
+let UID=0; const uid=p=>p+(++UID);
+const n1=v=>Math.round(v*10)/10;
+const clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
+const D2R=Math.PI/180;
+/* css animation string. Delay is seconds from BEAT START (beats are seeked via Web Animations) */
+const an=(name,d=0,dur=.4,opt='ease-out')=>`animation:${name} ${dur}s ${opt} ${d}s both;`;
+/* group with static transform + animated inner group (so css transforms never clobber the attribute transform) */
+function g(inner,o={}){
+let t='';
+if(o.x||o.y) t+=`translate(${n1(o.x||0)} ${n1(o.y||0)}) `;
+if(o.r) t+=`rotate(${o.r}) `;
+if(o.s!=null) t+=Array.isArray(o.s)?`scale(${o.s[0]} ${o.s[1]})`:`scale(${o.s})`;
+const c=(o.a||o.c||o.st)?`<g${o.c?` class="${o.c}"`:''} style="${o.st||''}${o.a||''}">` :'';
+return `<g${t?` transform="${t.trim()}"`:''}>${c}${inner}${c?'</g>':''}</g>`;
+}
+const P=(d,fill='none',st='',sw=0,ex='')=>`<path d="${d}" fill="${fill}"${st?` stroke="${st}" stroke-width="${sw}"`:''}${ex}/>`;
+const Rc=(x,y,w,h,fill,rx=0,st='',sw=0,ex='')=>`<rect x="${n1(x)}" y="${n1(y)}" width="${n1(w)}" height="${n1(h)}" rx="${rx}" fill="${fill}"${st?` stroke="${st}" stroke-width="${sw}"`:''}${ex}/>`;
+const Ci=(x,y,r,fill,st='',sw=0,ex='')=>`<circle cx="${n1(x)}" cy="${n1(y)}" r="${n1(r)}" fill="${fill}"${st?` stroke="${st}" stroke-width="${sw}"`:''}${ex}/>`;
+const El=(x,y,rx,ry,fill,st='',sw=0,ex='')=>`<ellipse cx="${n1(x)}" cy="${n1(y)}" rx="${n1(rx)}" ry="${n1(ry)}" fill="${fill}"${st?` stroke="${st}" stroke-width="${sw}"`:''}${ex}/>`;
+const Ln=(x1,y1,x2,y2,st,sw,ex='')=>`<line x1="${n1(x1)}" y1="${n1(y1)}" x2="${n1(x2)}" y2="${n1(y2)}" stroke="${st}" stroke-width="${sw}"${ex}/>`;
+const Tx=(x,y,s,size,fill='#fff',ex='')=>`<text x="${n1(x)}" y="${n1(y)}" font-size="${size}" font-weight="900" fill="${fill}" text-anchor="middle" font-family="Impact,'Arial Black','Helvetica Neue',sans-serif" ${ex}>${s}</text>`;
