@@ -1,4 +1,4 @@
-Build a single self-contained HTML file (inline CSS/JS, no external assets except the narration file) that plays a vertical 9:16 animated video, "THE APARTMENT RULES - PART 1", synced to the narration audio file from this repository (narration.mp3).
+Build a single self-contained HTML file (inline CSS/JS, no external assets except the narration file) that plays a vertical 9:16 animated video, "THE GHOST SHIP - MARY CELESTE", synced to the narration audio file from this repository (narration.mp3).
 
 TIMING - CRITICAL: script.txt contains the EXACT start and end time of every spoken sentence, measured from the real audio. Use those exact times for scene changes, caption display and every timed action. Do NOT estimate or rescale timings.
 
@@ -6,13 +6,12 @@ Requirements:
 - Stage 1080x1920 (scale to fit), flat vector cartoon style drawn with SVG/CSS/JS, DETAILED furnished scenes matching the scene labels in script.txt - never simple shapes on empty backgrounds.
 - A simple recurring main character (round white head, teal shirt, dark pants; for THE CAT WHO WAITED the hero is a small ginger cat) that actually MOVES: walking, breathing, trembling, turning its head, changing facial expressions (calm, worried, shocked, terrified / or the fitting emotions) matched to the story beats.
 - Play the narration audio. Display the spoken words as LARGE bold white KINETIC captions (black outline, lower-center) changing WORD BY WORD in sync with the narration within each sentence's exact time window, plus a smaller subtitle line at the very bottom with the full current sentence. One keyword per sentence in lime green.
-- Red top banner: "THE APARTMENT RULES - PART 1", plus a small scene/time label per section from script.txt.
+- Red top banner: "THE GHOST SHIP - MARY CELESTE", plus a small scene/time label per section from script.txt.
 - SOUND EFFECTS - synthesize ALL of them in code with the WebAudio API (oscillators, filtered noise, envelopes). NO external audio files. Mix them LOW under the narration and trigger them at the matching narration moments:
-- fluorescent buzz + flicker clicks: when the lights flicker
-- knocks on wood - count them exactly: three, then later four: at the knocking lines
-- wet cloth sliding drag: as the thing passes the door
-- washing machine hum + rhythmic thump: through the laundry scene
-- paper card flip tap: when the card appears
+- ocean waves - slow filtered noise swells: under the whole video, very low
+- ship wood creaks: at scene changes
+- a single ship bell: on the discovery scene
+- wind gusts: during the theories scene
 - DIRECTION (what makes this look stunning - follow it strictly):
   * Cut rhythm: a HARD CUT to a new visual beat every 2-3 seconds, timed to the narration phrases. Never hold one static composition for a whole scene; each scene contains several beats.
   * Faces are SWAPPED wholesale per beat from an expression library (calm, worried, shocked wide-eyes, sweat-drop panic, terrified, smug, determined): draw each face as its own SVG group and switch instantly on the beat - do not morph.

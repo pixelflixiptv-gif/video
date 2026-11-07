@@ -1,39 +1,37 @@
-THE APARTMENT RULES - PART 1 (Horror Story)
+THE GHOST SHIP - MARY CELESTE (Mystery)
 Narration: narration.mp3 / narration.wav - sentences synth individually with pauses; EXACT timings below.
 
-[MOVING DAY]
-    0.00 -   2.83  The rent was cheap. Too cheap.
-    3.21 -   4.84  Now I know why.
-    5.22 -   9.47  When I signed the lease, the landlord handed me a card.
-    9.85 -  15.32  He said: Follow the rules... and we will never have a problem.
+[DECEMBER 1872 - ATLANTIC OCEAN]
+    0.00 -   4.01  A ship is drifting... in the middle of the Atlantic Ocean.
+    4.39 -   7.22  Sails set. Cargo untouched.
+    7.60 -  10.55  But the crew?... Gone. All ten of them.
+   10.93 -  15.85  This is the Mary Celeste. The most famous ghost ship in history.
+   16.23 -  19.69  And to this day... nobody knows what happened.
 
-[THE RULES]
-   16.17 -  21.50  Rule one: If the hallway lights flicker twice... stay in your room.
-   21.88 -  26.27  It means something is passing... through the hall.
-   26.65 -  31.91  Rule two: Mrs. Ada knocks three times. Always three.
-   32.29 -  37.79  If you ever hear four knocks?... Do not open. It is not her.
-   38.17 -  42.85  Rule three: Never use the laundry room after midnight.
-   43.23 -  47.09  No reason given. Just... never.
+[THE DISCOVERY]
+   20.54 -  25.89  Another ship found her, drifting, on December 4th, 1872.
+   26.27 -  29.77  They climbed aboard... and called out. Silence.
+   30.15 -  34.86  The only lifeboat was missing. Everything else... was still there.
+   35.24 -  40.64  Food for six months. And 1,700 barrels of cargo.
 
-[THE FIRST NIGHT]
-   47.94 -  52.36  That night... the lights flickered. Once.
-   52.74 -  55.28  I held my breath. Twice.
-   55.66 -  60.87  Something slid past my door... like wet cloth on wood.
-   61.25 -  64.13  Then the knocking started.
+[THE CAPTAIN]
+   41.49 -  44.32  Captain Benjamin Briggs was no amateur.
+   44.70 -  48.95  He was careful. Experienced. Trusted by everyone.
+   49.33 -  54.92  With him were his wife... and their little girl. Just two years old.
+   55.30 -  58.47  The last log entry was written on November 25th.
+   58.85 -  62.18  Rough weather. Nothing more. No fear. No warning.
 
-[FOUR KNOCKS]
-   64.98 -  68.12  One. Two. Three.
-   68.50 -  71.69  My hand reached for the handle...
-   72.07 -  73.06  Four.
-   73.44 -  76.63  The fourth knock was not on the wood.
-   77.01 -  81.47  It came... from inside the apartment. Behind me.
+[THE THEORIES]
+   63.03 -  66.99  Pirates? Nothing was stolen. Not even the crew's clothes.
+   67.37 -  71.07  A storm? The ship survived it... so why abandon her?
+   71.45 -  76.15  Poisoned food? A mutiny? A waterspout at midnight?
+   76.53 -  80.71  Every theory explains one thing... and breaks on another.
 
-[THE LAUNDRY ROOM]
-   82.32 -  88.13  I ran. The only door without a lock... was the laundry room.
-   88.51 -  91.99  The lights were on. A machine was running.
-   92.37 -  97.80  The machine was full of clothes. My clothes. Still warm.
-   98.18 - 105.45  And folded on top... the landlord's card. With a new rule written on the back.
-  105.83 - 110.82  Rule four: If you are reading this... it already knows your name.
-  111.20 - 115.45  Do you stay in the laundry room?... Or do you run for the stairs?
+[THE QUESTION]
+   81.56 -  87.97  Ten people stepped into a small boat... in the middle of an ocean.
+   88.35 -  92.09  Why would a careful captain... do that?
+   92.47 -  96.00  The boat was never found. Neither were they.
+   96.38 - 101.56  150 years later... the sea is still keeping its secret.
+  101.94 - 105.90  What do YOU think happened... to the Mary Celeste?
 
-Speech ends at 115.45s. Then 5.2s of silence (end card). Total video length: 120.65s
+Speech ends at 105.90s. Then 5.2s of silence (end card). Total video length: 111.10s
