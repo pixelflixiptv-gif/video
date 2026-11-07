@@ -1,0 +1,173 @@
+/* ===== FINAL PART 4: boot tail (events, rAF loop, boot calls, deep link, window.GHOST) ===== */
+/* Continues directly after part 3b's fitHud(). Uses the GX refs created in part 3b. */
+
+/* [EDIT 33] Safe play wrapper. setPlaying() sets prevT=cur, which would swallow cues at exactly 0.00
+   (GLOBAL_SFX wind, scene 1 beat sfx at offset 0). Back prevT off by 1 ms so fire() catches them. */
+let gxStarted=false;
+function gxGo(){
+  toggle();
+  if(playing){ gxStarted=true; if(cur<=.001) prevT=-.001; }
+}
+
+/* [EDIT 34] Skip: S key and #btnSkip. Jumps to the next scene cut after the current time
+   (from the intro this is scene 2 at 20.17). prevT is set just before the cut so the cut's
+   creak and the new beat's offset-0 cues still fire. Before the first play it also starts
+   playback, because the key press or click counts as the user gesture that audio needs. */
+function skipIntro(){
+  const cuts=SCENES.map(s=>s.cut).filter(c=>c>cur+.05).sort((a,b)=>a-b);
+  if(!cuts.length) return;
+  const c=cuts[0];
+  seek(c);
+  prevT=c-.001;
+  if(!gxStarted&&!playing) gxGo();
+}
+GX.btnSkip=document.getElementById('btnSkip');
+if(GX.btnSkip) GX.btnSkip.addEventListener('click',e=>{ e.stopPropagation(); skipIntro(); GX.btnSkip.blur(); });
+
+/* [EDIT 35] Drag to seek on the progress bar (pointer events, works with mouse and touch) */
+let dragging=false;
+function seekFromEvent(e){
+  if(!GX.bar) return;
+  const r=GX.bar.getBoundingClientRect();
+  const x=Math.min(1,Math.max(0,(e.clientX-r.left)/Math.max(1,r.width)));
+  seek(x*TOTAL);
+}
+if(GX.bar){
+  GX.bar.style.touchAction='none';
+  GX.bar.addEventListener('pointerdown',e=>{
+    e.preventDefault(); e.stopPropagation(); dragging=true;
+    try{ GX.bar.setPointerCapture(e.pointerId); }catch(_){}
+    seekFromEvent(e);
+  });
+  GX.bar.addEventListener('pointermove',e=>{ if(dragging) seekFromEvent(e); });
+  const endDrag=e=>{ if(!dragging) return; dragging=false; try{ GX.bar.releasePointerCapture(e.pointerId); }catch(_){} };
+  GX.bar.addEventListener('pointerup',endDrag);
+  GX.bar.addEventListener('pointercancel',endDrag);
+  GX.bar.addEventListener('click',e=>e.stopPropagation());
+}
+
+/* [EDIT 36] Click to toggle: play button, start overlay, and the stage itself
+   (stage clicks on controls, buttons, the bar or the overlay are ignored) */
+if(GX.btn) GX.btn.addEventListener('click',e=>{ e.stopPropagation(); gxGo(); GX.btn.blur(); });
+if(GX.startOv) GX.startOv.addEventListener('click',e=>{ e.stopPropagation(); gxGo(); });
+if(GX.stage) GX.stage.addEventListener('click',e=>{
+  const t=e.target;
+  if(t&&t.closest&&t.closest('#startOv,button,a,input,select,[data-scene],.gxmk')) return;
+  if(GX.bar&&GX.bar.contains(t)) return;
+  if(GX.ctl&&GX.ctl.contains(t)) return;
+  gxGo();
+});
+
+/* [EDIT 37] Keyboard: Space play/pause, ArrowRight +5s, ArrowLeft -5s, S skip.
+   M is NOT bound here: part 1 already binds the M key and #btnMute to toggleMute().
+   Binding it again would mute and unmute on the same key press. */
+document.addEventListener('keydown',e=>{
+  if(e.ctrlKey||e.metaKey||e.altKey) return;
+  const tg=e.target, tn=tg&&tg.tagName;
+  if(tn==='INPUT'||tn==='TEXTAREA'||tn==='SELECT'||(tg&&tg.isContentEditable)) return;
+  const k=e.key;
+  if(k===' '||k==='Spacebar'||e.code==='Space'){
+    e.preventDefault();
+    if(document.activeElement&&document.activeElement.blur) document.activeElement.blur();
+    if(!e.repeat) gxGo();
+  } else if(k==='ArrowRight'){
+    e.preventDefault(); seek(cur+5);
+  } else if(k==='ArrowLeft'){
+    e.preventDefault(); seek(cur-5);
+  } else if((k==='s'||k==='S')&&!e.repeat){
+    e.preventDefault(); skipIntro();
+  }
+});
+
+/* Resize: refit the 1080x1920 stage to the window */
+window.addEventListener('resize',()=>{ fitStage(); fitHud(); });
+
+/* [EDIT 38] frame(): one time-based rAF loop.
+   While the narration is really playing (and seekable), audio.currentTime is the clock and the
+   wall clock is re-anchored every frame. If the audio ends, fails, is blocked or cannot seek,
+   the wall clock takes over seamlessly, so the end card (105.90-111.10) still runs to TOTAL. */
+let gxRafOn=false;
+function frame(){
+  requestAnimationFrame(frame);
+  const now=performance.now();
+  if(playing){
+    let t;
+    const a=(typeof audio!=='undefined')?audio:null;
+    if(audioActive&&a&&!a.paused&&!a.ended&&!audioNoSeek&&isFinite(a.currentTime)){
+      t=a.currentTime; t0=t; wall0=now;
+    } else {
+      t=t0+(now-wall0)/1000;
+    }
+    if(t>=TOTAL){
+      cur=TOTAL-.001; fire(prevT,cur); prevT=cur;
+      render(cur,true); setPlaying(false);
+      return;
+    }
+    cur=Math.max(0,t);
+    fire(prevT,cur); prevT=cur;
+    render(cur,forceRender);
+  } else if(forceRender){
+    render(cur,true);
+  }
+}
+function gxStartLoop(){ if(gxRafOn) return; gxRafOn=true; requestAnimationFrame(frame); }
+
+/* [EDIT 39] Boot */
+compile(); buildMarkers(); fitStage(); fitHud();
+
+/* [EDIT 40] Deep link: ?t=75, ?t=75.5, ?t=1:15, ?t=1m15s, and the same forms after #t= */
+function gxParseT(v){
+  if(v==null||v==='') return NaN;
+  v=decodeURIComponent(String(v)).trim();
+  let m=v.match(/^(\d+):(\d+(?:\.\d+)?)$/);
+  if(m) return (+m[1])*60+(+m[2]);
+  m=v.match(/^(?:(\d+)m)?(?:(\d+(?:\.\d+)?)s?)?$/);
+  if(m&&(m[1]||m[2])) return (+m[1]||0)*60+(+m[2]||0);
+  return NaN;
+}
+function gxLinkT(){
+  let v=null;
+  try{ v=new URLSearchParams(location.search).get('t'); }catch(_){}
+  if(v==null){ const h=location.hash.match(/[#&]t=([^&]+)/); if(h) v=h[1]; }
+  return gxParseT(v);
+}
+{
+  const lt=gxLinkT();
+  if(isFinite(lt)) seek(lt); else { cur=0; prevT=-.001; render(0,true); }
+}
+window.addEventListener('hashchange',()=>{ const lt=gxLinkT(); if(isFinite(lt)) seek(lt); });
+
+requestAnimationFrame(()=>{ fitStage(); fitHud(); forceRender=true; gxStartLoop(); });
+
+/* [EDIT 41] window.GHOST export. Kit members are read through gxK(), so a helper name that is
+   missing from an earlier part becomes undefined instead of crashing the whole file at boot. */
+const gxK=f=>{ try{ return f(); }catch(_){ return undefined; } };
+window.GHOST={
+  SCENES, LINES,
+  BEATS:()=>BEATS,
+  plugScene, seek,
+  toggle:gxGo, skip:skipIntro,
+  SFX:gxK(()=>SFX), B,
+  GX,
+  kit:{
+    an:gxK(()=>an), g:gxK(()=>g), P:gxK(()=>P), Rc:gxK(()=>Rc), Ci:gxK(()=>Ci), El:gxK(()=>El),
+    Ln:gxK(()=>Ln), Tx:gxK(()=>Tx), TxO:gxK(()=>TxO), pill:gxK(()=>pill), check:gxK(()=>check),
+    speedLines:gxK(()=>speedLines), sunburst:gxK(()=>sunburst), sparkles:gxK(()=>sparkles),
+    starburst:gxK(()=>starburst), swoosh:gxK(()=>swoosh), vig:gxK(()=>vig), motes:gxK(()=>motes),
+    qmarks:gxK(()=>qmarks), drawPath:gxK(()=>drawPath), dashedDraw:gxK(()=>dashedDraw),
+    magnifier:gxK(()=>magnifier), arrow:gxK(()=>arrow), birds:gxK(()=>birds),
+    hero:gxK(()=>hero), telescope:gxK(()=>telescope),
+    sky:gxK(()=>sky), sea:gxK(()=>sea), ship:gxK(()=>ship), barrel:gxK(()=>barrel),
+    crate:gxK(()=>crate), wheel:gxK(()=>wheel), coil:gxK(()=>coil), deck:gxK(()=>deck),
+    cabin:gxK(()=>cabin), pantry:gxK(()=>pantry), hold:gxK(()=>hold), rowboat:gxK(()=>rowboat),
+    shipBell:gxK(()=>shipBell), paper:gxK(()=>paper), calendar:gxK(()=>calendar),
+    crewIcon:gxK(()=>crewIcon), hullWall:gxK(()=>hullWall), ghostShape:gxK(()=>ghostShape),
+    pinDot:gxK(()=>pinDot), mapBG:gxK(()=>mapBG), vis:gxK(()=>vis), rr:gxK(()=>rr),
+    uid:gxK(()=>uid), fmt:gxK(()=>fmt), INK:gxK(()=>INK),
+    /* part 3 scene helpers, for building plugScene() scenes in the same style */
+    ax, SH, TXT, HW, TAG, BURST, SPK, ARW,
+    xSteam, xEmbers, xGalley, xTable, xFood, xChair, xSil, xFrame, xHold, xBarrel, xPipe, xStove
+  }
+};
+
+})();</script></body></html>
