@@ -1,42 +1,39 @@
-THE ELEVATOR - PART 2 (Horror Story)
+THE APARTMENT RULES - PART 1 (Horror Story)
 Narration: narration.mp3 / narration.wav - sentences synth individually with pauses; EXACT timings below.
 
-[3:31 AM - THE CAMERA]
-    0.00 -   2.47  You chose the camera. Smart.
-    2.85 -   6.76  Because what the camera shows you... is worse.
-    7.14 -  11.39  And then... between one frame... and the next...
-   11.77 -  13.38  Someone is standing there.
+[MOVING DAY]
+    0.00 -   2.83  The rent was cheap. Too cheap.
+    3.21 -   4.84  Now I know why.
+    5.22 -   9.47  When I signed the lease, the landlord handed me a card.
+    9.85 -  15.32  He said: Follow the rules... and we will never have a problem.
 
-[CAM 02 - THE HALLWAY]
-   14.23 -  17.23  He was not there a second ago. No door opening.
-   17.61 -  21.81  Just... there. Facing your door. Perfectly still.
-   22.19 -  26.61  Listening to what?... To you. Breathing.
-   26.99 -  32.12  Then, slowly... he raises one hand...
+[THE RULES]
+   16.17 -  21.50  Rule one: If the hallway lights flicker twice... stay in your room.
+   21.88 -  26.27  It means something is passing... through the hall.
+   26.65 -  31.91  Rule two: Mrs. Ada knocks three times. Always three.
+   32.29 -  37.79  If you ever hear four knocks?... Do not open. It is not her.
+   38.17 -  42.85  Rule three: Never use the laundry room after midnight.
+   43.23 -  47.09  No reason given. Just... never.
 
-[THE ELEVATOR]
-   32.97 -  36.55  And the elevator dings... on the lobby floor.
-   36.93 -  40.62  Wait. The lobby?... Nobody called it.
-   41.00 -  45.25  On the camera, the doors open... to an empty hall.
-   45.63 -  50.82  The number above them starts to climb. Coming... to you.
+[THE FIRST NIGHT]
+   47.94 -  52.36  That night... the lights flickered. Once.
+   52.74 -  55.28  I held my breath. Twice.
+   55.66 -  60.87  Something slid past my door... like wet cloth on wood.
+   61.25 -  64.13  Then the knocking started.
 
-[3:33 AM - YOUR PHONE]
-   51.67 -  54.74  Your phone buzzes in your shaking hand.
-   55.12 -  58.19  A text. From your own number. Again.
-   58.57 -  63.80  It says: The camera lies. I am already inside.
-   64.18 -  68.14  Behind you... something in the dark apartment... breathes.
+[FOUR KNOCKS]
+   64.98 -  68.12  One. Two. Three.
+   68.50 -  71.69  My hand reached for the handle...
+   72.07 -  73.06  Four.
+   73.44 -  76.63  The fourth knock was not on the wood.
+   77.01 -  81.47  It came... from inside the apartment. Behind me.
 
-[RULE THREE]
-   68.99 -  71.56  Rule three. Remember rule three?
-   71.94 -  74.63  It ends when the elevator reaches the lobby.
-   75.01 -  79.69  So you run. Not to the door. To the window. To the fire escape.
-   80.07 -  84.53  And above you... the elevator dings... on your floor.
+[THE LAUNDRY ROOM]
+   82.32 -  88.13  I ran. The only door without a lock... was the laundry room.
+   88.51 -  91.99  The lights were on. A machine was running.
+   92.37 -  97.80  The machine was full of clothes. My clothes. Still warm.
+   98.18 - 105.45  And folded on top... the landlord's card. With a new rule written on the back.
+  105.83 - 110.82  Rule four: If you are reading this... it already knows your name.
+  111.20 - 115.45  Do you stay in the laundry room?... Or do you run for the stairs?
 
-[THE LOBBY]
-   85.38 -  88.55  But this time... it does not stop.
-   88.93 -  95.36  The number drops. Five. Four. Three. Two.
-   95.74 - 100.81  It is going down. It is leaving. It is... over?
-  101.19 - 103.54  Your phone buzzes one last time.
-  103.92 - 108.05  It says: Lobby. Your turn. Tomorrow night... you ride.
-  108.43 - 112.10  Do you take the stairs forever?... Or do you ride it down?
-
-Speech ends at 112.10s. Then 5.2s of silence (end card). Total video length: 117.30s
+Speech ends at 115.45s. Then 5.2s of silence (end card). Total video length: 120.65s
