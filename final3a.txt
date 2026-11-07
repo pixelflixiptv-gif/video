@@ -1,0 +1,212 @@
+/* ===== FINAL PART 3a: endCardBeat() + SCENES (opening, scenes 1-2) ===== */
+
+/* [EDIT 18] Local scene helpers and keyframes (prefix gx*).
+   They depend only on vis(), INK and the kit already delivered in part 2. */
+(function(){
+  const st=document.createElement('style');
+  st.textContent=
+   '.gx{transform-box:fill-box;transform-origin:50% 50%}'+ 
+   '.gxb{transform-box:fill-box;transform-origin:50% 100%}'+ 
+   '@keyframes gxPop{0%{transform:scale(0) rotate(-8deg)}60%{transform:scale(1.18) rotate(2deg)}100%{transform:scale(1) rotate(0)}}'+ 
+   '@keyframes gxIn{from{transform:translate3d(-18px,0,0)}to{transform:translate3d(0,0,0)}}'+ 
+   '@keyframes gxBob{0%,100%{transform:translate3d(0,0,0)}50%{transform:translate3d(0,-16px,0)}}'+ 
+   '@keyframes gxBounce{0%,100%{transform:translate3d(0,0,0)}50%{transform:translate3d(0,26px,0)}}'+ 
+   '@keyframes gxSway{0%,100%{transform:rotate(-3deg)}50%{transform:rotate(3deg)}}'+ 
+   '@keyframes gxTw{0%,100%{transform:scale(.25) rotate(0)}50%{transform:scale(1) rotate(45deg)}}'+ 
+   '@keyframes gxPump{from{transform:rotate(-16deg)}to{transform:rotate(16deg)}}'+ 
+   '@keyframes gxRise{from{transform:scaleY(.02)}to{transform:scaleY(1)}}'+ 
+   '@keyframes gxSlide{from{transform:translate3d(-520px,0,0)}to{transform:translate3d(0,0,0)}}';
+  document.head.appendChild(st);
+})();
+const Y3='#ffd23f', R3='#ff2e4d', C3='#38f3ff', W3='#ffffff';
+const ax=(n,d,dur,o)=>{ o=o||{}; return `animation:${n} ${dur}s ${o.ease||'ease-out'} ${d}s ${o.it||1} ${o.dir||'normal'} both;`; };
+const SH=(inner,on,off,anim,cls)=>`<g style="${vis(on||0,off)}">${anim?`<g class="${cls||'gx'}" style="${anim}">${inner}</g>`:inner}</g>`;
+const TXT=(s,x,y,sz,fill,o)=>{ o=o||{}; const on=o.on||0;
+  const t=`<text x="${x}" y="${y}" text-anchor="${o.anchor||'middle'}" font-family="Impact,'Arial Black',sans-serif" font-size="${sz}" fill="${fill}" stroke="${o.stroke||INK}" stroke-width="${o.sw!=null?o.sw:Math.round(sz*.12)}" stroke-linejoin="round" paint-order="stroke" style="letter-spacing:2px"${o.rot?` transform="rotate(${o.rot} ${x} ${y})"`:''}>${s}</text>`;
+  return SH(t,on,o.off,ax('gxPop',on,.4)); };
+const HW=(s,x,y,sz,fill,on,o)=>{ o=o||{};
+  return SH(`<text x="${x}" y="${y}" font-family="'Courier New',monospace" font-weight="700" font-size="${sz}" fill="${fill}">${s}</text>`,on,o.off,ax('gxIn',on,.3)); };
+const TAG=(s,x,y,w,h,fill,tc,o)=>{ o=o||{}; const on=o.on||0, sz=o.sz||Math.round(h*.5);
+  let b=`<rect x="${x-w/2}" y="${y-h/2}" width="${w}" height="${h}" rx="${h/2}" fill="${fill}" stroke="${INK}" stroke-width="7"/><text x="${x}" y="${y+sz*.36}" text-anchor="middle" font-family="Impact,'Arial Black',sans-serif" font-size="${sz}" fill="${tc}" style="letter-spacing:2px">${s}</text>`;
+  if(o.rot) b=`<g transform="rotate(${o.rot} ${x} ${y})">${b}</g>`;
+  return SH(b,on,o.off,ax('gxPop',on,.4)); };
+const BURST=(x,y,r,fill,o)=>{ o=o||{}; const n=o.n||14, on=o.on||0; let p='';
+  for(let i=0;i<n*2;i++){ const a=i*Math.PI/n, q=i%2?r*.62:r; p+=(i?'L':'M')+(x+Math.cos(a)*q).toFixed(1)+' '+(y+Math.sin(a)*q).toFixed(1); }
+  return SH(`<path d="${p}Z" fill="${fill}" stroke="${INK}" stroke-width="8" stroke-linejoin="round"/>`,on,o.off,ax('gxPop',on,.35)); };
+const SPK=(x,y,r,col,on)=>SH(`<path d="M${x} ${y-r}Q${x} ${y} ${x+r} ${y}Q${x} ${y} ${x} ${y+r}Q${x} ${y} ${x-r} ${y}Q${x} ${y} ${x} ${y-r}Z" fill="${col||W3}"/>`,on,null,ax('gxTw',on,1.4,{it:'infinite',ease:'ease-in-out'}));
+const ARW=(x,y,s,col,on)=>SH(`<g transform="translate(${x} ${y}) scale(${s})"><path d="M-46 -70H46V0H92L0 90L-92 0H-46Z" fill="${col}" stroke="${INK}" stroke-width="8" stroke-linejoin="round"/></g>`,on,null,ax('gxBounce',on,.9,{it:'infinite',ease:'ease-in-out'}));
+
+/* [EDIT 19] End card, first beat moved from 106.05 to 105.90 (end card content kept) */
+function endCardBeat(){
+  return B(105.90,'end-card',[1,1.06,540,900],()=>{
+    const bg=sky({pal:'night',h:1250,stars:60,moon:90,moonx:820,moony:420})+sea(1250);
+    const mid=ship({x:300,y:1290,s:.55,ghost:true,still:true})+
+      rowboat({x:720,y:1360,s:1})+
+      hero({x:720,y:1330,s:.85,seq:[{at:0,face:'worried',pose:'stand'},{at:2.0,face:'confused',pose:'shrug'}]});
+    const fg=
+      TXT('WHAT HAPPENED',540,250,120,W3,{on:.2})+
+      TXT('TO THE',540,370,92,C3,{on:.5})+
+      TXT('MARY CELESTE?',540,520,128,R3,{on:.9,rot:-2})+
+      TAG('DROP YOUR GUESS IN THE COMMENTS',540,1610,900,96,Y3,INK,{on:1.8,sz:42})+
+      TAG('PART 2 DEPENDS ON YOUR ANSWER',540,1730,860,88,W3,INK,{on:2.4,sz:40})+
+      ARW(540,1830,.5,Y3,3)+
+      SPK(180,640,34,W3,.6)+SPK(900,760,28,Y3,1.4)+SPK(420,700,22,C3,2.2)+SPK(960,300,26,W3,.9)+
+      vig('Blue');
+    return {bg,mid,fg};
+  },{sfx:[[.15,'drone'],[1.6,'ping'],[2.3,'thud'],[3.1,'ping']]});
+}
+
+/* [EDIT 20] SCENES opens here; scenes 1-2 rebuilt on script.txt timings.
+   NOTE: the array is NOT closed in this part - part 3b continues with scene 3. */
+const SCENES=[
+ {id:1,title:'DECEMBER 1872 - ATLANTIC OCEAN',cut:0,beats:[
+
+  /* 0.00-3.92  sentence 1: the Dei Gratia in the grey Atlantic
+     [EDIT 21] the old off-stage sparkle (x=1360) is gone: this beat was rebuilt from scratch */
+  B(0,'s1-dei-gratia',[1,1.12,540,960],()=>{
+    const bg=sky({pal:'dusk',h:1060})+sea(1060);
+    const mid=ship({x:540,y:1150,s:1.05,name:'DEI GRATIA'});
+    const fg=TXT('DECEMBER 1872',540,330,130,Y3,{on:.25,rot:-3})+
+      TXT('ATLANTIC OCEAN',540,470,92,C3,{on:1.1})+
+      TAG('BRIG DEI GRATIA',540,1500,640,96,W3,INK,{on:2.2,sz:50})+
+      SPK(300,1120,26,W3,1.5)+SPK(800,1180,20,W3,2.4);
+    return {bg,mid,fg};
+  },{sfx:[[.1,'wind',.5],[2.4,'creak',.35]]}),
+
+  /* 3.92-8.08  sentence 2: a ship where no ship should be */
+  B(3.92,'s1-ship-not-there',[1,1.35,720,980],()=>{
+    const bg=sky({pal:'ghost',h:1040})+sea(1040);
+    const mid=ship({x:300,y:1260,s:.75,name:'DEI GRATIA'})+
+      ship({x:790,y:1030,s:.4,ghost:true,still:true});
+    const fg=SH(`<text x="790" y="780" text-anchor="middle" font-family="Impact,'Arial Black',sans-serif" font-size="220" fill="${Y3}" stroke="${INK}" stroke-width="18" paint-order="stroke">?</text>`,.6,null,ax('gxPop',.6,.45))+
+      BURST(540,330,170,R3,{on:3.1})+
+      TXT('!',540,400,200,W3,{on:3.1})+
+      TAG('SHIP SPOTTED',540,1560,620,92,W3,INK,{on:1.2,sz:48});
+    return {bg,mid,fg};
+  },{sfx:[[.2,'wind',.4],[.6,'ping',.5],[3.1,'sting',.6]]}),
+
+  /* 8.08-12.06  sentence 3: the Mary Celeste, sails slack */
+  B(8.08,'s1-mary-celeste',[1.05,1.4,540,950],()=>{
+    const bg=sky({pal:'ghost',h:1100})+sea(1100);
+    const mid=ship({x:540,y:1200,s:1.3,ghost:true,name:'MARY CELESTE',still:true});
+    const fg=TAG('MARY CELESTE',540,330,700,110,W3,INK,{on:.4,sz:62,rot:-2})+
+      TXT('SAILS HANGING LIMP',540,1620,70,C3,{on:1.6})+
+      SPK(250,820,24,W3,1)+SPK(860,900,20,C3,2);
+    return {bg,mid,fg};
+  },{sfx:[[0,'whisper',.4],[.1,'wind',.45],[1.5,'creak',.4]]}),
+
+  /* 12.06-14.60  sentence 4 (first half): Morehouse at the rail with the telescope */
+  B(12.06,'s1-morehouse',[1,1.15,420,1100],()=>{
+    const d=deck({pal:'dusk',wheel:false,mast:true});
+    const bg=sky({pal:'dusk',h:1000})+sea(1000)+ship({x:800,y:1000,s:.5,ghost:true,still:true})+d.bg;
+    const mid=d.mid+hero({x:330,y:1560,s:1.45,seq:[{at:0,face:'suspicious',pose:'scope'}]});
+    const fg=d.fg+TAG('FIRST MATE MOREHOUSE',540,330,860,100,Y3,INK,{on:.3,sz:54});
+    return {bg,mid,fg};
+  },{sfx:[[.2,'wind',.4],[1.2,'ping',.4]]}),
+
+  /* 14.60-16.72  "says!": punch-in with starburst */
+  B(14.60,'s1-says-punch',[1.7,1.3,400,1250],()=>{
+    const bg=sky({pal:'dusk',h:1000})+sea(1000);
+    const mid=hero({x:400,y:1500,s:1.5,seq:[{at:0,face:'shocked',pose:'point'}]});
+    const fg=BURST(480,900,240,Y3,{on:.1})+
+      TXT("SHE'S SAILING",480,880,58,INK,{on:.25,stroke:W3,sw:6})+
+      TXT('HERSELF!',480,990,100,R3,{on:.4});
+    return {bg,mid,fg};
+  },{shake:.35,sfx:[[0,'sting',.7],[.05,'thud',.6]]}),
+
+  /* 16.72-20.17  sentence 5: no one is there, empty deck */
+  B(16.72,'s1-empty-deck',[1,1.25,540,1450],()=>{
+    const d=deck({pal:'ghost',wheel:true,mast:true});
+    const bg=sky({pal:'ghost',h:1000})+sea(1000)+d.bg;
+    const mid=d.mid;
+    const fg=d.fg+TXT('NO ONE.',540,560,170,R3,{on:.4,rot:-4})+
+      SH(`<text x="540" y="1000" text-anchor="middle" font-family="Impact,'Arial Black',sans-serif" font-size="260" fill="${W3}" stroke="${INK}" stroke-width="18" paint-order="stroke">?</text>`,1.4,null,ax('gxPop',1.4,.45));
+    return {bg,mid,fg};
+  },{sfx:[[0,'wind',.5],[.3,'creak',.5],[1.2,'whisper',.5],[2.6,'drone',.4]]})
+ ]},
+
+ {id:2,title:'THE LOG & THE PUMP',cut:20.17,beats:[
+
+  /* 20.17-23.92  boarding party rows across */
+  B(20.17,'s2-boarding',[1,1.3,540,1200],()=>{
+    const bg=sky({pal:'ghost',h:1100})+sea(1100);
+    const mid=ship({x:780,y:1160,s:.95,ghost:true,name:'MARY CELESTE',still:true})+
+      SH(rowboat({x:300,y:1330,s:1})+hero({x:300,y:1300,s:.8,seq:[{at:0,face:'determined',pose:'stand'}]}),0,null,ax('gxSlide',0,2.2));
+    const fg=TAG('BOARDING PARTY',540,330,720,104,Y3,INK,{on:.4,sz:58});
+    return {bg,mid,fg};
+  },{sfx:[[.3,'splash',.5],[1.4,'woodKnock',.5],[2.4,'creak',.4]]}),
+
+  /* 23.92-27.48  the captain's cabin: confused, then suspicious */
+  B(23.92,'s2-cabin',[1,1.25,540,1050],()=>{
+    const c=cabin({candle:true,books:true,d1:true});
+    const bg=c.bg;
+    const mid=c.mid+hero({x:560,y:1500,s:1.35,seq:[{at:0,face:'confused',pose:'shrug'},{at:1.8,face:'suspicious',pose:'hips'}]});
+    const fg=TAG("CAPTAIN'S CABIN",540,330,780,100,W3,INK,{on:.3,sz:54})+
+      SH(`<text x="820" y="760" text-anchor="middle" font-family="Impact,'Arial Black',sans-serif" font-size="200" fill="${Y3}" stroke="${INK}" stroke-width="16" paint-order="stroke">?</text>`,1.2,null,ax('gxBob',1.2,2.2,{it:'infinite',ease:'ease-in-out'}));
+    return {bg,mid,fg};
+  },{sfx:[[0,'creak',.45],[.4,'candle',.5],[1.0,'whisper',.4],[2.4,'woodKnock',.45]]}),
+
+  /* 27.48-34.70  the log: confusion turns to horror */
+  B(27.48,'s2-the-log',[1,1.2,540,800],()=>{
+    const bg=`<rect x="0" y="0" width="1080" height="1920" fill="#141b33"/>`;
+    let ruled=''; for(let y=520;y<=1240;y+=100) ruled+=`<line x1="190" y1="${y}" x2="890" y2="${y}" stroke="#c7b27c" stroke-width="3"/>`;
+    const page=
+      `<g transform="rotate(-2 540 820)">`+
+      `<rect x="160" y="350" width="780" height="980" rx="22" fill="#00000055"/>`+
+      `<rect x="150" y="330" width="780" height="980" rx="22" fill="#f3e3b8" stroke="${INK}" stroke-width="8"/>`+ruled+`</g>`;
+    const ink='#2b2140';
+    const mid=page+
+      `<g transform="rotate(-2 540 820)">`+
+      HW("SHIP'S LOG",200,440,56,ink,.4)+
+      HW('NOV 24  fair wind, all well',190,560,38,ink,1.0)+
+      HW('NOV 25  8 AM  island sighted',190,660,38,ink,1.7)+
+      SH(`<ellipse cx="540" cy="645" rx="372" ry="48" fill="none" stroke="${R3}" stroke-width="9"/>`,2.6,null,ax('gxPop',2.6,.4))+
+      HW('NOV 26  ____________',190,760,38,'#8a7a55',3.6)+
+      HW('NOV 27  ____________',190,860,38,'#8a7a55',3.9)+
+      HW('  ...',190,960,38,'#8a7a55',4.2)+
+      HW('DEC 4   FOUND DRIFTING',190,1160,38,R3,4.7)+
+      `</g>`;
+    const fg=hero({x:870,y:1790,s:1.0,seq:[
+        {at:0,face:'confused',pose:'shrug'},{at:1.8,face:'suspicious',pose:'hips'},
+        {at:3.4,face:'worried',pose:'clutch'},{at:4.8,face:'shocked',pose:'recoil'},{at:6.0,face:'terrified',pose:'headhands'}]})+
+      TAG('LAST ENTRY',540,300,560,96,R3,W3,{on:2.6,sz:54,rot:-3})+
+      BURST(210,1560,170,Y3,{on:5.3})+
+      TXT('9',210,1600,150,R3,{on:5.4})+
+      TXT('DAYS',210,1690,60,INK,{on:5.5,stroke:W3,sw:5});
+    return {bg,mid,fg};
+  },{sfx:[[.2,'whisper',.4],[1.0,'woodKnock',.35],[2.6,'ping',.5],[5.3,'sting',.7],[5.6,'heartbeat',.6]]}),
+
+  /* 34.70-38.77  the pump */
+  B(34.70,'s2-the-pump',[1,1.3,420,1200],()=>{
+    let planks=''; for(let y=1560;y<=1900;y+=70) planks+=`<line x1="0" y1="${y}" x2="1080" y2="${y}" stroke="#0b1226" stroke-width="5"/>`;
+    const bg=`<rect x="0" y="0" width="1080" height="1920" fill="#101a30"/><rect x="0" y="1540" width="1080" height="380" fill="#1b2744"/>`+planks;
+    const pump=
+      `<rect x="640" y="1500" width="280" height="60" rx="14" fill="#3a4658" stroke="${INK}" stroke-width="8"/>`+
+      `<rect x="740" y="1000" width="80" height="510" rx="16" fill="#6b7a90" stroke="${INK}" stroke-width="8"/>`+
+      `<rect x="710" y="975" width="140" height="56" rx="12" fill="#4b586d" stroke="${INK}" stroke-width="8"/>`+
+      `<g class="gxb" style="${ax('gxPump',.3,.48,{it:5,dir:'alternate',ease:'ease-in-out'})}"><rect x="760" y="700" width="40" height="290" rx="10" fill="#b7791f" stroke="${INK}" stroke-width="8"/><circle cx="780" cy="700" r="38" fill="#e0a43a" stroke="${INK}" stroke-width="8"/></g>`;
+    const mid=pump+hero({x:330,y:1620,s:1.3,seq:[
+        {at:0,face:'determined',pose:'point'},{at:1.9,face:'worried',pose:'shrug'},{at:3.0,face:'shocked',pose:'headhands'}]});
+    const fg=TAG('THE PUMP',540,300,540,104,Y3,INK,{on:.3,sz:62})+
+      BURST(560,780,150,R3,{on:2.4})+TXT('!',560,850,190,W3,{on:2.4});
+    return {bg,mid,fg};
+  },{shake:.35,sfx:[[.3,'knock',.5],[.8,'knock',.5],[1.3,'knock',.5],[2.4,'sting',.6],[2.5,'thud',.6]]}),
+
+  /* 38.77-43.00  3.5 feet of water; the sea is coming in */
+  B(38.77,'s2-water',[1,1.35,540,1300],()=>{
+    let ticks='',nums=''; for(let i=0;i<=5;i++){ const y=1600-i*180;
+      ticks+=`<line x1="745" y1="${y}" x2="835" y2="${y}" stroke="${INK}" stroke-width="6"/>`;
+      nums+=`<text x="860" y="${y+12}" font-family="Impact,'Arial Black',sans-serif" font-size="38" fill="${W3}">${i}</text>`; }
+    const bg=`<rect x="0" y="0" width="1080" height="1920" fill="#0e1830"/>`+
+      `<rect x="90" y="700" width="580" height="900" rx="30" fill="#1c2a45" stroke="${INK}" stroke-width="8"/>`;
+    const mid=
+      `<g class="gxb" style="${ax('gxRise',.3,2.2)}"><rect x="100" y="970" width="560" height="630" fill="#3fb0ff" opacity=".78"/></g>`+
+      `<rect x="770" y="700" width="40" height="900" rx="10" fill="#cbd5e1" stroke="${INK}" stroke-width="8"/>`+ticks+nums+
+      SH(`<path d="M690 970L745 940V1000Z" fill="${R3}" stroke="${INK}" stroke-width="6" stroke-linejoin="round"/>`,2.5,null,ax('gxPop',2.5,.35))+
+      hero({x:230,y:1830,s:.9,seq:[{at:0,face:'worried',pose:'stand'},{at:2.0,face:'terrified',pose:'headhands'}]});
+    const fg=TXT('3.5 FEET',540,420,170,Y3,{on:2.4,rot:-3})+
+      TXT('OF WATER',540,540,80,C3,{on:2.7})+
+      SH(`<rect x="0" y="1300" width="1080" height="620" fill="#3fb0ff" opacity=".22"/>`,3.2,null,ax('gxRise',3.2,.8),'gxb');
+    return {bg,mid,fg};
+  },{shake:.3,sfx:[[.2,'splash',.5],[1.6,'drone',.4],[2.4,'sting',.7],[3.2,'bell',.6],[3.3,'whisper',.4]]})
+ ]},
