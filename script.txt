@@ -1,40 +1,42 @@
-THE ELEVATOR - PART 1 (horror story, narration script)
-Audio: narration.mp3 / narration.wav - total 65 seconds of speech, then 5 seconds of silence (end card).
+THE ELEVATOR - PART 2 (Horror Story)
+Narration: narration.mp3 / narration.wav - sentences synth individually with pauses; EXACT timings below.
 
-[3:17 AM - YOUR HALLWAY]
-Your building has six floors.
-And one elevator.
-At 3:17 in the morning, it dings on your floor.
-But nobody pressed the button.
+[3:31 AM - THE CAMERA]
+    0.00 -   2.47  You chose the camera. Smart.
+    2.85 -   6.76  Because what the camera shows you... is worse.
+    7.14 -  11.39  And then... between one frame... and the next...
+   11.77 -  13.38  Someone is standing there.
 
-[3:17 AM - THE ELEVATOR]
-The doors do not open.
-They just ding. Again. And again.
+[CAM 02 - THE HALLWAY]
+   14.23 -  17.23  He was not there a second ago. No door opening.
+   17.61 -  21.81  Just... there. Facing your door. Perfectly still.
+   22.19 -  26.61  Listening to what?... To you. Breathing.
+   26.99 -  32.12  Then, slowly... he raises one hand...
 
-[3:19 AM - YOUR PHONE]
-Your phone lights up.
-A text from Mom: Open the door. I forgot my keys.
-There is only one problem.
-Mom is asleep in the next room.
+[THE ELEVATOR]
+   32.97 -  36.55  And the elevator dings... on the lobby floor.
+   36.93 -  40.62  Wait. The lobby?... Nobody called it.
+   41.00 -  45.25  On the camera, the doors open... to an empty hall.
+   45.63 -  50.82  The number above them starts to climb. Coming... to you.
 
-[KNOW THE RULES]
-Rule one: never count the dings.
-If it reaches three, it knows you are listening.
-Rule two: a voice you love must answer a question only they know.
-
-[3:24 AM - HALLWAY CAMERA]
-You check the hallway camera instead.
-The hallway is empty.
-Then the knocking starts.
-
-[3:26 AM - YOUR PHONE]
-Your phone buzzes in your hand.
-A text. From your own number.
-It says: Why won't you open? I'm cold.
+[3:33 AM - YOUR PHONE]
+   51.67 -  54.74  Your phone buzzes in your shaking hand.
+   55.12 -  58.19  A text. From your own number. Again.
+   58.57 -  63.80  It says: The camera lies. I am already inside.
+   64.18 -  68.14  Behind you... something in the dark apartment... breathes.
 
 [RULE THREE]
-Rule three: it ends when the elevator reaches the lobby.
-Not one second before.
-The knocking just started again.
-Do you open the door... or check the camera?
+   68.99 -  71.56  Rule three. Remember rule three?
+   71.94 -  74.63  It ends when the elevator reaches the lobby.
+   75.01 -  79.69  So you run. Not to the door. To the window. To the fire escape.
+   80.07 -  84.53  And above you... the elevator dings... on your floor.
 
+[THE LOBBY]
+   85.38 -  88.55  But this time... it does not stop.
+   88.93 -  95.36  The number drops. Five. Four. Three. Two.
+   95.74 - 100.81  It is going down. It is leaving. It is... over?
+  101.19 - 103.54  Your phone buzzes one last time.
+  103.92 - 108.05  It says: Lobby. Your turn. Tomorrow night... you ride.
+  108.43 - 112.10  Do you take the stairs forever?... Or do you ride it down?
+
+Speech ends at 112.10s. Then 5.2s of silence (end card). Total video length: 117.30s

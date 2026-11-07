@@ -1,9 +1,26 @@
-Build a single self-contained HTML file (inline CSS/JS, no external assets) that plays a vertical 9:16 animated horror story video, "THE ELEVATOR - PART 1", synced to the narration audio file from this repository (narration.mp3).
+Build a single self-contained HTML file (inline CSS/JS, no external assets except the narration file) that plays a vertical 9:16 animated video, "THE ELEVATOR - PART 2", synced to the narration audio file from this repository (narration.mp3).
+
+TIMING - CRITICAL: script.txt contains the EXACT start and end time of every spoken sentence, measured from the real audio. Use those exact times for scene changes, caption display and every timed action. Do NOT estimate or rescale timings.
 
 Requirements:
-- Canvas/full-screen stage 1080x1920 (scale to fit), dark navy night palette, flat vector cartoon style drawn with SVG/CSS/JS - detailed scenes, NOT simple shapes on empty backgrounds: furnished bedroom, elevator doors with indicator, phone with readable text messages, hallway CCTV view with grain, front door, sunrise window.
-- A simple recurring character (round white head, teal shirt, dark pants) that actually moves: breathing in bed, sitting up, walking, trembling, checking the phone - animate limbs and body with CSS/JS keyframes, plus animated details everywhere: flickering lights, a ringing/vibrating phone, elevator DING flashes, knocking door shake, CCTV static, rising sun.
-- Play the narration audio; display the spoken words as LARGE bold white KINETIC captions (black outline, lower-center) that change WORD BY WORD in sync with the narration - align each word to the pauses/silences in the audio - plus a smaller subtitle line at the very bottom carrying the full current sentence. Time every scene cut and every character action/expression change to the exact narration phrase it belongs to (e.g. the elevator indicator flashes exactly when the narrator says "dings", the door shakes exactly on "knocking"). Characters need changing facial expressions (calm, worried, shocked, terrified) matched to the story beats, and detailed story props (alarm clock showing 3:17, elevator floor indicator, phone with readable messages, CCTV timestamp).
-- Red banner at the top: "THE ELEVATOR - PART 1", plus a small scene/time label per section from script.txt.
-- End card after the narration ends (last ~5s, silent): "DO YOU OPEN THE DOOR? OR CHECK THE CAMERA?" and "PART 2 DEPENDS ON YOUR ANSWER".
-- Include Play/Pause and a progress bar. Everything must run by just opening the HTML file (the audio file sits next to it in the repo).
+- Stage 1080x1920 (scale to fit), flat vector cartoon style drawn with SVG/CSS/JS, DETAILED furnished scenes matching the scene labels in script.txt - never simple shapes on empty backgrounds.
+- A simple recurring main character (round white head, teal shirt, dark pants; for THE CAT WHO WAITED the hero is a small ginger cat) that actually MOVES: walking, breathing, trembling, turning its head, changing facial expressions (calm, worried, shocked, terrified / or the fitting emotions) matched to the story beats.
+- Play the narration audio. Display the spoken words as LARGE bold white KINETIC captions (black outline, lower-center) changing WORD BY WORD in sync with the narration within each sentence's exact time window, plus a smaller subtitle line at the very bottom with the full current sentence. One keyword per sentence in lime green.
+- Red top banner: "THE ELEVATOR - PART 2", plus a small scene/time label per section from script.txt.
+- SOUND EFFECTS - synthesize ALL of them in code with the WebAudio API (oscillators, filtered noise, envelopes). NO external audio files. Mix them LOW under the narration and trigger them at the matching narration moments:
+- elevator DING - a clean metallic bell tone: at every 'dings' line
+- CCTV static - soft filtered noise: under all camera scenes
+- phone buzz - two short vibration pulses: at every phone buzz line
+- heartbeat - low double thump, speeding up: through the RULE THREE scene
+- deep low boom: on the final text message
+- DIRECTION (what makes this look stunning - follow it strictly):
+  * Cut rhythm: a HARD CUT to a new visual beat every 2-3 seconds, timed to the narration phrases. Never hold one static composition for a whole scene; each scene contains several beats.
+  * Faces are SWAPPED wholesale per beat from an expression library (calm, worried, shocked wide-eyes, sweat-drop panic, terrified, smug, determined): draw each face as its own SVG group and switch instantly on the beat - do not morph.
+  * Pose-to-pose character animation: instant readable poses (pointing, recoiling, clutching the phone, hands on head) with head bobbing and arm raises; no walk cycles needed.
+  * Camera: punch-in close-ups (scale 1.6-2x on the face) for reaction beats, then cut back wide. Foreground / midground / background layers with slight parallax drift; falling or floating elements (dust, rain, snow, static) move at a different speed than the characters.
+  * Every scene has ONE hero prop that reads instantly at phone size (alarm clock, elevator indicator, phone, rules poster, lifeboat, station gate...).
+  * Effects library, used generously: white speed lines and radial sunburst behind shock moments, sparkles/glow on reveals, sweat drops on panic faces, impact starburst on knocks/dings, a circular swoosh trail on fast moves, vignette pulse on danger beats, and ONE slow-motion moment at the story's climax (scale animation speed to ~0.3 for 1-2 seconds).
+  * Kinetic words POP IN with a scale bounce (0.6 -> 1.05 -> 1.0) and are color-coded by emotion: fear = icy white/blue, danger = red, mystery/reveal = lime green, warmth = soft gold.
+- End card during the final 5.2 seconds (narration is silent then): a big question or message that invites comments (from the last lines of script.txt), plus "PART 2 DEPENDS ON YOUR ANSWER" when the story is a Part 1.
+- Include Play/Pause and a progress bar. Everything must run by just opening the HTML file (narration.mp3 sits next to it in the repo).
+Output ONLY the complete HTML (build it as index.html).
