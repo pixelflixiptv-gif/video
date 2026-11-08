@@ -1,40 +1,39 @@
-THE NIGHT CLERK (Horror Story)
+THE CONFESSION APP (Dark Secrets)
 Narration: narration.mp3 / narration.wav - sentences synth individually with pauses; EXACT timings below.
 
-[THE HOTEL AT 3 AM]
-    0.00 -   4.18  The Meridian Hotel has one rule for the night clerk.
-    4.56 -   9.38  Never look at the security cameras between three and four in the morning.
-    9.76 -  14.10  Karim had worked there six years... and he had never broken it.
-   14.48 -  17.58  Until the night SHE checked in.
+[THE APP]
+    0.00 -   3.46  Confess was the app everyone downloaded that summer.
+    3.84 -  11.88  Say your darkest secret out loud, and the app would bury it forever. Anonymous. Untraceable. Gone.
+   12.26 -  15.23  In one month, it had ten million users.
+   15.61 -  17.75  And forty million secrets.
 
-[THE GUEST]
-   18.43 -  26.64  She arrived at three-oh-five, in a red coat, with no luggage, and a smile that did not reach her eyes.
-   27.02 -  32.56  I need a room, she said. The same one as always.
-   32.94 -  36.37  But Karim had never seen her before in his life.
-   36.75 -  41.39  Room six-oh-six, she whispered. He keeps it for me.
+[THE PATTERN]
+   18.60 -  22.99  A night-shift moderator named Dana was the first to notice.
+   23.37 -  25.96  Some confessions were not about the past.
+   26.34 -  31.84  I will push him off the bridge on Friday, one said. It was posted on a Tuesday.
+   32.22 -  35.07  On Friday, a man fell from that bridge.
 
-[THE REGISTER]
-   42.24 -  45.81  His hands shook as he opened the register book.
-   46.19 -  52.50  Room six-oh-six was occupied. It had been occupied for eleven years.
-   52.88 -  59.77  By a guest who paid in cash, in advance... and had never once been seen.
-   60.15 -  66.90  The name on the page was written in red ink: DO NOT DISTURB. EVER.
+[THE RULE]
+   35.92 -  39.45  Dana started screenshotting everything.
+   39.83 -  47.92  The rule was simple, and it was always true: if the confession was written in the future tense... it happened.
+   48.30 -  50.51  Every single time.
+   50.89 -  57.54  And the accounts that posted them were all created on the same day. Before the app even launched.
 
-[THE CAMERAS]
-   67.75 -  75.69  She took the key and walked to the elevator... without pressing a single button. The doors simply opened.
-   76.07 -  79.93  Karim did the one thing he was never supposed to do.
-   80.31 -  82.43  He looked at the cameras.
-   82.81 -  90.97  And on the screen, the hallway of the sixth floor was full of people. Standing. Facing the walls. Not moving.
+[THE UPLOAD]
+   58.39 -  63.19  Then, one night, a new confession appeared on her screen.
+   63.57 -  67.41  It had no account. No timestamp. No audio.
+   67.79 -  73.02  Just one sentence, written in red: Dana, stop counting us.
 
-[ROOM 606]
-   91.82 -  99.54  In the middle of the hallway, the woman in red turned... and looked straight into the camera. Straight at him.
-   99.92 - 104.17  She raised one finger to her lips: shhh.
-  104.55 - 109.40  Then every person in the hallway turned their head... at the same time.
-  109.78 - 115.16  Karim ran. He did not stop running until the sun came up.
+[THE LAST SECRET]
+   73.87 -  76.94  Her hands were still shaking when the next one arrived.
+   77.32 -  81.57  Tomorrow, the moderator will tell the world what she found.
+   81.95 -  85.79  Tomorrow, the moderator will scream... and no one will ever find her phone.
+   86.17 -  88.21  It was written in the future tense.
 
-[THE MORNING AFTER]
-  116.01 - 119.70  The day manager found the register open on the desk.
-  120.08 - 130.31  And under the red name, a new line had been added, in fresh ink: the night clerk looked. Now he belongs to the sixth floor.
-  130.69 - 133.47  Karim never came back to work.
-  133.85 - 144.39  But guests on the sixth floor sometimes complain, at three in the morning, about the man at the end of the hall... watching them. Would YOU have looked?
+[THE DOWNLOAD]
+   89.06 -  97.58  Dana never came to work again. The company said she quit. The app was sold, quietly, within a week.
+   97.96 - 100.72  Confess is still in the app store. It still works.
+  101.10 - 108.47  But if you open it at three in the morning... sometimes there is a confession already waiting. Written in the future tense. About you.
+  108.85 - 109.90  Would you read it?
 
-Speech ends at 144.39s. Then 5.2s of silence (end card). Total video length: 149.59s
+Speech ends at 109.90s. Then 5.2s of silence (end card). Total video length: 115.10s
