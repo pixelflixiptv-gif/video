@@ -1,37 +1,39 @@
-THE GHOST SHIP - MARY CELESTE (Mystery)
+THE BEAR CUB AND THE MOON (Animation)
 Narration: narration.mp3 / narration.wav - sentences synth individually with pauses; EXACT timings below.
 
-[DECEMBER 1872 - ATLANTIC OCEAN]
-    0.00 -   4.01  A ship is drifting... in the middle of the Atlantic Ocean.
-    4.39 -   7.22  Sails set. Cargo untouched.
-    7.60 -  10.55  But the crew?... Gone. All ten of them.
-   10.93 -  15.85  This is the Mary Celeste. The most famous ghost ship in history.
-   16.23 -  19.69  And to this day... nobody knows what happened.
+[LOST IN THE FOREST]
+    0.00 -   3.86  Milo was the smallest bear cub in the forest.
+    4.24 -  14.83  And one autumn evening, chasing a butterfly one turn too far... he looked up, and realized he was lost.
+   15.21 -  18.40  The trees all looked the same.
+   18.78 -  21.42  And the dark was coming.
 
-[THE DISCOVERY]
-   20.54 -  25.89  Another ship found her, drifting, on December 4th, 1872.
-   26.27 -  29.77  They climbed aboard... and called out. Silence.
-   30.15 -  34.86  The only lifeboat was missing. Everything else... was still there.
-   35.24 -  40.64  Food for six months. And 1,700 barrels of cargo.
+[THE MOON RISES]
+   22.27 -  32.13  Milo sat down and cried, the way small bears do: quietly, so the forest would not hear.
+   32.51 -  34.48  But someone did hear.
+   34.86 -  40.65  Above the trees, round and silver and kind... the Moon was rising.
+   41.03 -  45.32  Moon... do you know the way to my den?
 
-[THE CAPTAIN]
-   41.49 -  44.32  Captain Benjamin Briggs was no amateur.
-   44.70 -  48.95  He was careful. Experienced. Trusted by everyone.
-   49.33 -  54.92  With him were his wife... and their little girl. Just two years old.
-   55.30 -  58.47  The last log entry was written on November 25th.
-   58.85 -  62.18  Rough weather. Nothing more. No fear. No warning.
+[THE SILVER PATH]
+   46.17 -  50.59  The Moon could not speak... moons never do.
+   50.97 -  53.01  But she did something better.
+   53.39 -  60.54  She poured her light through the branches, and made a silver path on the forest floor.
+   60.92 -  66.25  And Milo, wiping his nose with his paw, began to follow it.
 
-[THE THEORIES]
-   63.03 -  66.99  Pirates? Nothing was stolen. Not even the crew's clothes.
-   67.37 -  71.07  A storm? The ship survived it... so why abandon her?
-   71.45 -  76.15  Poisoned food? A mutiny? A waterspout at midnight?
-   76.53 -  80.71  Every theory explains one thing... and breaks on another.
+[THE RIVER]
+   67.10 -  75.57  The path led him past the river, where his reflection walked beside him, so he would not feel alone.
+   75.95 -  81.30  And an old owl blinked down from a branch, and whispered:
+   81.68 -  87.51  Keep walking, little one. She only lights the way for the brave.
 
-[THE QUESTION]
-   81.56 -  87.97  Ten people stepped into a small boat... in the middle of an ocean.
-   88.35 -  92.09  Why would a careful captain... do that?
-   92.47 -  96.00  The boat was never found. Neither were they.
-   96.38 - 101.56  150 years later... the sea is still keeping its secret.
-  101.94 - 105.90  What do YOU think happened... to the Mary Celeste?
+[MOTHER]
+   88.36 -  96.50  At last, over the hill, Milo saw it: the warm, dark mouth of the den.
+   96.88 - 103.77  And a shape, huge and worried, pacing in the moonlight. His mother.
+  104.15 - 107.46  She had been searching all night.
+  107.84 - 112.30  Milo ran the last steps on his short, tired legs.
 
-Speech ends at 105.90s. Then 5.2s of silence (end card). Total video length: 111.10s
+[GOODNIGHT]
+  113.15 - 117.07  Thank you, Moon. Same time tomorrow?
+  117.45 - 124.43  That night, curled into his mother's fur, Milo fell asleep smiling.
+  124.81 - 133.50  And though moons never speak... that night, she seemed to shine just a little bit brighter.
+  133.88 - 139.23  Goodnight, little dreamers. Who lights YOUR way home?
+
+Speech ends at 139.23s. Then 5.2s of silence (end card). Total video length: 144.43s
