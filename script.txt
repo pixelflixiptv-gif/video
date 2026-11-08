@@ -1,39 +1,39 @@
-THE CONFESSION APP (Dark Secrets)
+THE STRANGER ON THE NIGHT TRAIN (Romance)
 Narration: narration.mp3 / narration.wav - sentences synth individually with pauses; EXACT timings below.
 
-[THE APP]
-    0.00 -   3.46  Confess was the app everyone downloaded that summer.
-    3.84 -  11.88  Say your darkest secret out loud, and the app would bury it forever. Anonymous. Untraceable. Gone.
-   12.26 -  15.23  In one month, it had ten million users.
-   15.61 -  17.75  And forty million secrets.
+[THE NIGHT TRAIN]
+    0.00 -   6.14  The night train from Cairo to Alexandria was almost empty.
+    6.52 -  17.16  Layla had the whole carriage to herself, a book she was not reading, and a wedding ring she had taken off an hour ago.
+   17.54 -  22.14  Then the door slid open... and he walked in.
 
-[THE PATTERN]
-   18.60 -  22.99  A night-shift moderator named Dana was the first to notice.
-   23.37 -  25.96  Some confessions were not about the past.
-   26.34 -  31.84  I will push him off the bridge on Friday, one said. It was posted on a Tuesday.
-   32.22 -  35.07  On Friday, a man fell from that bridge.
+[THE STRANGER]
+   22.99 -  30.17  He was tall, dark-eyed, with rain on his coat, and a smile he tried to hide.
+   30.55 -  38.69  This seat taken? he asked, pointing at the empty row... and the forty empty rows behind it.
+   39.07 -  47.37  Layla laughed before she could stop herself. It depends, she said. Are you dangerous?
+   47.75 -  53.77  Only to boring journeys, he said, and sat down across from her.
 
-[THE RULE]
-   35.92 -  39.45  Dana started screenshotting everything.
-   39.83 -  47.92  The rule was simple, and it was always true: if the confession was written in the future tense... it happened.
-   48.30 -  50.51  Every single time.
-   50.89 -  57.54  And the accounts that posted them were all created on the same day. Before the app even launched.
+[THE GAME]
+   54.62 -  62.76  Somewhere past Tanta, she closed her book. Somewhere past nowhere, he took off his coat.
+   63.14 -  72.74  They played a game of truths. One secret for one secret. No names. No cities. No lies.
+   73.12 -  77.08  I was supposed to get married today, she said.
+   77.46 -  89.36  I know, he said, and her heart stopped. I was the driver waiting outside the hall. You ran past my car... still in your dress.
 
-[THE UPLOAD]
-   58.39 -  63.19  Then, one night, a new confession appeared on her screen.
-   63.57 -  67.41  It had no account. No timestamp. No audio.
-   67.79 -  73.02  Just one sentence, written in red: Dana, stop counting us.
+[THE CONFESSION]
+   90.21 -  94.63  The train rocked them closer with every mile.
+   95.01 - 104.61  I followed the train at every station, he admitted. Just to see if you would get off. Just to see if you were free.
+  104.99 - 110.37  That is the craziest thing I have ever heard, she whispered.
+  110.75 - 114.32  Then why, he asked, are you smiling?
 
-[THE LAST SECRET]
-   73.87 -  76.94  Her hands were still shaking when the next one arrived.
-   77.32 -  81.57  Tomorrow, the moderator will tell the world what she found.
-   81.95 -  85.79  Tomorrow, the moderator will scream... and no one will ever find her phone.
-   86.17 -  88.21  It was written in the future tense.
+[ALEXANDRIA]
+  115.17 - 121.03  When the train slowed into Alexandria, the sky was turning gold.
+  121.41 - 133.31  He stood, held out his hand, and said: one coffee. If it is terrible, you never see me again.
+  133.69 - 144.13  Layla looked at the hand. At the ring mark on her own finger. At the woman she used to be, leaving on the train without her.
+  144.51 - 146.62  She took his hand.
 
-[THE DOWNLOAD]
-   89.06 -  97.58  Dana never came to work again. The company said she quit. The app was sold, quietly, within a week.
-   97.96 - 100.72  Confess is still in the app store. It still works.
-  101.10 - 108.47  But if you open it at three in the morning... sometimes there is a confession already waiting. Written in the future tense. About you.
-  108.85 - 109.90  Would you read it?
+[THE SAME TRAIN]
+  147.47 - 156.07  They say she never went back for her things. They say the coffee was terrible... and she stayed for three more.
+  156.45 - 167.58  And every year, on the same night, they take the same train, and sit in the same carriage... and play the game of truths.
+  167.96 - 179.36  Some strangers are not strangers at all. Some are just... the life you were supposed to live, arriving one train late.
+  179.74 - 181.90  Have you met yours yet?
 
-Speech ends at 109.90s. Then 5.2s of silence (end card). Total video length: 115.10s
+Speech ends at 181.90s. Then 5.2s of silence (end card). Total video length: 187.10s
