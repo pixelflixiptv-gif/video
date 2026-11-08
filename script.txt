@@ -1,37 +1,40 @@
-THE TURTLE WHO CAME HOME (Animation)
+THE NIGHT CLERK (Horror Story)
 Narration: narration.mp3 / narration.wav - sentences synth individually with pauses; EXACT timings below.
 
-[THE DEEP BLUE]
-    0.00 -   7.75  In the deep blue, where the water is quiet and old, lived a sea turtle named Nalu.
-    8.13 -  14.52  She was ninety years old, and she had swum every ocean on Earth.
-   14.90 -  24.54  But tonight, the current whispered something she had not heard in a long, long time: go home.
+[THE HOTEL AT 3 AM]
+    0.00 -   4.18  The Meridian Hotel has one rule for the night clerk.
+    4.56 -   9.38  Never look at the security cameras between three and four in the morning.
+    9.76 -  14.10  Karim had worked there six years... and he had never broken it.
+   14.48 -  17.58  Until the night SHE checked in.
 
-[THE MEMORY]
-   25.39 -  33.82  Home was a small beach she had left as a baby, no bigger than your thumb, ninety years ago.
-   34.20 -  37.51  No map. No signs.
-   37.89 -  46.10  Only the taste of the water, the pull of the Earth, and a memory written inside her heart.
+[THE GUEST]
+   18.43 -  26.64  She arrived at three-oh-five, in a red coat, with no luggage, and a smile that did not reach her eyes.
+   27.02 -  32.56  I need a room, she said. The same one as always.
+   32.94 -  36.37  But Karim had never seen her before in his life.
+   36.75 -  41.39  Room six-oh-six, she whispered. He keeps it for me.
 
-[THE LONG SWIM]
-   46.95 -  53.60  She swam for many days and nights, past coral cities and sleeping whales.
-   53.98 -  62.23  Until one moonlit evening, the water turned warm and familiar... and there it was.
-   62.61 -  66.45  The same sand. The same moon.
-   66.83 -  70.31  The same beach where her life began.
+[THE REGISTER]
+   42.24 -  45.81  His hands shook as he opened the register book.
+   46.19 -  52.50  Room six-oh-six was occupied. It had been occupied for eleven years.
+   52.88 -  59.77  By a guest who paid in cash, in advance... and had never once been seen.
+   60.15 -  66.90  The name on the page was written in red ink: DO NOT DISTURB. EVER.
 
-[THE GIRL]
-   71.16 -  78.31  On the beach stood a little girl with a flashlight, who had promised the sea she would keep it safe.
-   78.69 -  83.59  She saw Nalu struggling up the sand, and she ran, shouting:
-   83.97 -  88.43  She is here! The grandmother turtle is here!
-   88.81 -  93.06  Turn off the lights, everyone, she needs the dark!
+[THE CAMERAS]
+   67.75 -  75.69  She took the key and walked to the elevator... without pressing a single button. The doors simply opened.
+   76.07 -  79.93  Karim did the one thing he was never supposed to do.
+   80.31 -  82.43  He looked at the cameras.
+   82.81 -  90.97  And on the screen, the hallway of the sixth floor was full of people. Standing. Facing the walls. Not moving.
 
-[THE NEST]
-   93.91 - 106.03  Under the quiet moon, Nalu dug her nest, and left ninety small white eggs in the warm sand, each one a tiny promise.
-  106.41 - 114.50  Then, tired and happy, she turned back to the sea that had carried her all her life.
+[ROOM 606]
+   91.82 -  99.54  In the middle of the hallway, the woman in red turned... and looked straight into the camera. Straight at him.
+   99.92 - 104.17  She raised one finger to her lips: shhh.
+  104.55 - 109.40  Then every person in the hallway turned their head... at the same time.
+  109.78 - 115.16  Karim ran. He did not stop running until the sun came up.
 
-[NINETY PROMISES]
-  115.35 - 119.98  Sixty days later, the sand began to move...
-  120.36 - 130.83  And ninety tiny turtles, no bigger than your thumb, ran for the water, on the same beach, under the same sky.
-  131.21 - 137.59  The girl watched, and whispered: see you in ninety years.
-  137.97 - 143.68  Some journeys take a lifetime. But they always lead home.
-  144.06 - 147.52  What place is YOUR heart swimming back to?
+[THE MORNING AFTER]
+  116.01 - 119.70  The day manager found the register open on the desk.
+  120.08 - 130.31  And under the red name, a new line had been added, in fresh ink: the night clerk looked. Now he belongs to the sixth floor.
+  130.69 - 133.47  Karim never came back to work.
+  133.85 - 144.39  But guests on the sixth floor sometimes complain, at three in the morning, about the man at the end of the hall... watching them. Would YOU have looked?
 
-Speech ends at 147.52s. Then 5.2s of silence (end card). Total video length: 152.72s
+Speech ends at 144.39s. Then 5.2s of silence (end card). Total video length: 149.59s
