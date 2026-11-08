@@ -1,18 +1,18 @@
-Build a single self-contained HTML file (inline CSS/JS, no external assets except the narration file) that plays a vertical 9:16 animated video, "THE BEAR CUB AND THE MOON", synced to the narration audio file from this repository (narration.mp3).
+Build a single self-contained HTML file (inline CSS/JS, no external assets except the narration file) that plays a vertical 9:16 animated video, "THE TURTLE WHO CAME HOME", synced to the narration audio file from this repository (narration.mp3).
 
 TIMING - CRITICAL: script.txt contains the EXACT start and end time of every spoken sentence, measured from the real audio. Use those exact times for scene changes, caption display and every timed action. Do NOT estimate or rescale timings.
 
 Requirements:
 - Stage 1080x1920 (scale to fit), flat vector cartoon storybook style drawn with SVG/CSS/JS, warm colors, DETAILED scenes matching the scene labels in script.txt - never simple shapes on empty backgrounds.
-- Main character: the hero is a small brown bear cub with round ears and a cream belly; the other characters are a huge gentle mother bear and an old owl on a branch. The hero actually MOVES: walking, breathing, turning its head, changing facial expressions (sad and lost, teary, hopeful, scared of the dark, brave, amazed, sleepy-happy) matched to the story beats.
+- Main character: the hero is a big old sea turtle with a wise, gentle face and barnacle-speckled shell; the other characters are a little girl holding a flashlight and, at the end, dozens of tiny baby turtles. The hero actually MOVES: walking, breathing, turning its head, changing facial expressions (peaceful and old, remembering, determined, tired, joyful, tender) matched to the story beats.
 - Play the narration audio. Display the spoken words as LARGE bold white KINETIC captions (black outline, lower-center) changing WORD BY WORD in sync with the narration within each sentence's exact time window, plus a smaller subtitle line at the very bottom with the full current sentence. One keyword per sentence in lime green.
-- Red top banner: "THE BEAR CUB AND THE MOON", plus a small scene/time label per section from script.txt.
+- Red top banner: "THE TURTLE WHO CAME HOME", plus a small scene/time label per section from script.txt.
 - SOUND EFFECTS - synthesize ALL of them in code with the WebAudio API (oscillators, filtered noise, envelopes). NO external audio files. Mix them LOW under the narration and trigger them at the matching narration moments:
-- soft forest night ambience - gentle filtered noise with faint crickets: under the whole video, very low
-- a soft owl hoot - two low sine tones: at the river scene, when the owl appears
-- gentle stream water - soft filtered noise burble: during the river scene
-- tiny paw steps - soft little thumps: whenever Milo walks the silver path
-- warm chime swell - soft major arpeggio: at the reunion with mother and again on the final line
+- ocean waves - slow filtered noise swells: under the whole video, very low
+- soft bubbles - little sine blips rising: while Nalu swims underwater
+- gentle sand digging - soft scrapes: during the nest scene
+- tiny pattering - many soft quick taps: when the baby turtles run to the sea
+- soft dawn birds - light chirps: on the final scene
 - DIRECTION (what makes this look stunning - follow it strictly):
   * Cut rhythm: a HARD CUT to a new visual beat every 2-3 seconds, timed to the narration phrases. Never hold one static composition for a whole scene; each scene contains several beats.
   * Faces are SWAPPED wholesale per beat from an expression library: draw each face as its own SVG group and switch instantly on the beat - do not morph.
@@ -24,6 +24,6 @@ Requirements:
   * One shot per sentence: the visual must illustrate the exact sentence being spoken, never a generic backdrop.
   * Establishing shots get a slow Ken Burns push-in (scale 1.0 -> 1.08).
   * In the silent end-card tail, hold a bold CTA card with the story's big question.
-- End card during the final 5.2 seconds (narration is silent then): a big bold card with the question "WHO LIGHTS YOUR WAY HOME?" plus "DROP YOUR ANSWER IN THE COMMENTS".
+- End card during the final 5.2 seconds (narration is silent then): a big bold card with the question "WHAT PLACE IS YOUR HEART SWIMMING BACK TO?" plus "DROP YOUR ANSWER IN THE COMMENTS".
 - Include Play/Pause and a progress bar. Everything must run by just opening the HTML file (narration.mp3 sits next to it in the repo).
 Output ONLY the complete HTML (build it as index.html).

@@ -1,39 +1,37 @@
-THE BEAR CUB AND THE MOON (Animation)
+THE TURTLE WHO CAME HOME (Animation)
 Narration: narration.mp3 / narration.wav - sentences synth individually with pauses; EXACT timings below.
 
-[LOST IN THE FOREST]
-    0.00 -   3.86  Milo was the smallest bear cub in the forest.
-    4.24 -  14.83  And one autumn evening, chasing a butterfly one turn too far... he looked up, and realized he was lost.
-   15.21 -  18.40  The trees all looked the same.
-   18.78 -  21.42  And the dark was coming.
+[THE DEEP BLUE]
+    0.00 -   7.75  In the deep blue, where the water is quiet and old, lived a sea turtle named Nalu.
+    8.13 -  14.52  She was ninety years old, and she had swum every ocean on Earth.
+   14.90 -  24.54  But tonight, the current whispered something she had not heard in a long, long time: go home.
 
-[THE MOON RISES]
-   22.27 -  32.13  Milo sat down and cried, the way small bears do: quietly, so the forest would not hear.
-   32.51 -  34.48  But someone did hear.
-   34.86 -  40.65  Above the trees, round and silver and kind... the Moon was rising.
-   41.03 -  45.32  Moon... do you know the way to my den?
+[THE MEMORY]
+   25.39 -  33.82  Home was a small beach she had left as a baby, no bigger than your thumb, ninety years ago.
+   34.20 -  37.51  No map. No signs.
+   37.89 -  46.10  Only the taste of the water, the pull of the Earth, and a memory written inside her heart.
 
-[THE SILVER PATH]
-   46.17 -  50.59  The Moon could not speak... moons never do.
-   50.97 -  53.01  But she did something better.
-   53.39 -  60.54  She poured her light through the branches, and made a silver path on the forest floor.
-   60.92 -  66.25  And Milo, wiping his nose with his paw, began to follow it.
+[THE LONG SWIM]
+   46.95 -  53.60  She swam for many days and nights, past coral cities and sleeping whales.
+   53.98 -  62.23  Until one moonlit evening, the water turned warm and familiar... and there it was.
+   62.61 -  66.45  The same sand. The same moon.
+   66.83 -  70.31  The same beach where her life began.
 
-[THE RIVER]
-   67.10 -  75.57  The path led him past the river, where his reflection walked beside him, so he would not feel alone.
-   75.95 -  81.30  And an old owl blinked down from a branch, and whispered:
-   81.68 -  87.51  Keep walking, little one. She only lights the way for the brave.
+[THE GIRL]
+   71.16 -  78.31  On the beach stood a little girl with a flashlight, who had promised the sea she would keep it safe.
+   78.69 -  83.59  She saw Nalu struggling up the sand, and she ran, shouting:
+   83.97 -  88.43  She is here! The grandmother turtle is here!
+   88.81 -  93.06  Turn off the lights, everyone, she needs the dark!
 
-[MOTHER]
-   88.36 -  96.50  At last, over the hill, Milo saw it: the warm, dark mouth of the den.
-   96.88 - 103.77  And a shape, huge and worried, pacing in the moonlight. His mother.
-  104.15 - 107.46  She had been searching all night.
-  107.84 - 112.30  Milo ran the last steps on his short, tired legs.
+[THE NEST]
+   93.91 - 106.03  Under the quiet moon, Nalu dug her nest, and left ninety small white eggs in the warm sand, each one a tiny promise.
+  106.41 - 114.50  Then, tired and happy, she turned back to the sea that had carried her all her life.
 
-[GOODNIGHT]
-  113.15 - 117.07  Thank you, Moon. Same time tomorrow?
-  117.45 - 124.43  That night, curled into his mother's fur, Milo fell asleep smiling.
-  124.81 - 133.50  And though moons never speak... that night, she seemed to shine just a little bit brighter.
-  133.88 - 139.23  Goodnight, little dreamers. Who lights YOUR way home?
+[NINETY PROMISES]
+  115.35 - 119.98  Sixty days later, the sand began to move...
+  120.36 - 130.83  And ninety tiny turtles, no bigger than your thumb, ran for the water, on the same beach, under the same sky.
+  131.21 - 137.59  The girl watched, and whispered: see you in ninety years.
+  137.97 - 143.68  Some journeys take a lifetime. But they always lead home.
+  144.06 - 147.52  What place is YOUR heart swimming back to?
 
-Speech ends at 139.23s. Then 5.2s of silence (end card). Total video length: 144.43s
+Speech ends at 147.52s. Then 5.2s of silence (end card). Total video length: 152.72s
