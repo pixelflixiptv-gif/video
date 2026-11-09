@@ -1,39 +1,40 @@
-THE STRANGER ON THE NIGHT TRAIN (Romance)
+THE DOORMAN'S LIST (Horror Story)
 Narration: narration.mp3 / narration.wav - sentences synth individually with pauses; EXACT timings below.
 
-[THE NIGHT TRAIN]
-    0.00 -   6.14  The night train from Cairo to Alexandria was almost empty.
-    6.52 -  17.16  Layla had the whole carriage to herself, a book she was not reading, and a wedding ring she had taken off an hour ago.
-   17.54 -  22.14  Then the door slid open... and he walked in.
+[THE LIST]
+    0.00 -   5.33  The doorman of the Al-Nile Tower had one rule on his last night.
+    5.71 -  10.56  He handed Omar a folded list... and told him never to lose it.
+   10.94 -  16.58  These names, he said, are residents who must never be let in after midnight.
+   16.96 -  21.85  Because after midnight... they are not the residents anymore.
 
-[THE STRANGER]
-   22.99 -  30.17  He was tall, dark-eyed, with rain on his coat, and a smile he tried to hide.
-   30.55 -  38.69  This seat taken? he asked, pointing at the empty row... and the forty empty rows behind it.
-   39.07 -  47.37  Layla laughed before she could stop herself. It depends, she said. Are you dangerous?
-   47.75 -  53.77  Only to boring journeys, he said, and sat down across from her.
+[THE FIRST NIGHT]
+   22.70 -  29.54  Omar laughed it off. He was thirty-four, not a child, and the building was quiet.
+   29.92 -  40.51  At one in the morning, the intercom buzzed. A woman's voice, soft and polite: I live in flat twelve. I forgot my keys.
+   40.89 -  44.63  Omar checked the list. Flat twelve was on it.
+   45.01 -  47.46  He did not open the door.
 
-[THE GAME]
-   54.62 -  62.76  Somewhere past Tanta, she closed her book. Somewhere past nowhere, he took off his coat.
-   63.14 -  72.74  They played a game of truths. One secret for one secret. No names. No cities. No lies.
-   73.12 -  77.08  I was supposed to get married today, she said.
-   77.46 -  89.36  I know, he said, and her heart stopped. I was the driver waiting outside the hall. You ran past my car... still in your dress.
+[THE WOMAN IN BLACK]
+   48.31 -  55.75  The next night, she was standing at the glass door, in a black coat, her face hidden by her hair.
+   56.13 -  63.40  She did not knock. She just... waited. Watching him through the glass.
+   63.78 -  67.91  Omar turned off the lobby lights, hoping she would leave.
+   68.29 -  72.92  She did not move. Not once. Not all night.
 
-[THE CONFESSION]
-   90.21 -  94.63  The train rocked them closer with every mile.
-   95.01 - 104.61  I followed the train at every station, he admitted. Just to see if you would get off. Just to see if you were free.
-  104.99 - 110.37  That is the craziest thing I have ever heard, she whispered.
-  110.75 - 114.32  Then why, he asked, are you smiling?
+[THE RESIDENTS]
+   73.77 -  81.43  In the morning, the woman from flat twelve came downstairs, smiling, carrying groceries.
+   81.81 -  86.63  Good morning, Omar, she said, as if nothing had happened.
+   87.01 -  94.35  But her groceries were the same bags... from three nights ago. Unopened. Rotting.
+   94.73 - 102.44  And when Omar looked at her shadow on the marble floor... it was standing still, while she walked.
 
-[ALEXANDRIA]
-  115.17 - 121.03  When the train slowed into Alexandria, the sky was turning gold.
-  121.41 - 133.31  He stood, held out his hand, and said: one coffee. If it is terrible, you never see me again.
-  133.69 - 144.13  Layla looked at the hand. At the ring mark on her own finger. At the woman she used to be, leaving on the train without her.
-  144.51 - 146.62  She took his hand.
+[THE NAMES]
+  103.29 - 107.92  That night, Omar read the list properly, for the first time.
+  108.30 - 117.68  Eleven names. Eleven flats. And at the bottom, in the old doorman's shaking handwriting, a twelfth name.
+  118.06 - 119.26  His own.
+  119.64 - 128.28  Under it, one line: he will come for the new doorman on the third night. Do not answer the door.
 
-[THE SAME TRAIN]
-  147.47 - 156.07  They say she never went back for her things. They say the coffee was terrible... and she stayed for three more.
-  156.45 - 167.58  And every year, on the same night, they take the same train, and sit in the same carriage... and play the game of truths.
-  167.96 - 179.36  Some strangers are not strangers at all. Some are just... the life you were supposed to live, arriving one train late.
-  179.74 - 181.90  Have you met yours yet?
+[THE THIRD NIGHT]
+  129.13 - 134.08  On the third night, the intercom buzzed at exactly midnight.
+  134.46 - 143.31  A voice Omar knew too well spoke through it. His own voice. Open the door, Omar. It is cold out here.
+  143.69 - 149.77  The woman in the black coat was standing behind him now, inside the lobby, smiling.
+  150.15 - 163.61  Omar did not open the door. He is still there, they say, every night after midnight... waiting for someone else to take the list. Would YOU open the door?
 
-Speech ends at 181.90s. Then 5.2s of silence (end card). Total video length: 187.10s
+Speech ends at 163.61s. Then 5.2s of silence (end card). Total video length: 168.81s
