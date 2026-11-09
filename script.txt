@@ -1,40 +1,40 @@
-THE DOORMAN'S LIST (Horror Story)
+THE WOMAN IN THE WINDOW (Romance)
 Narration: narration.mp3 / narration.wav - sentences synth individually with pauses; EXACT timings below.
 
-[THE LIST]
-    0.00 -   5.33  The doorman of the Al-Nile Tower had one rule on his last night.
-    5.71 -  10.56  He handed Omar a folded list... and told him never to lose it.
-   10.94 -  16.58  These names, he said, are residents who must never be let in after midnight.
-   16.96 -  21.85  Because after midnight... they are not the residents anymore.
+[THE WINDOW ACROSS THE STREET]
+    0.00 -   6.41  Adam worked late every night, in a small office above a Cairo bookshop.
+    6.79 -  14.40  And every night, at exactly eleven, the window across the street lit up.
+   14.78 -  23.97  A woman lived there. He did not know her name. But he knew the way she tucked her hair behind her ear... while she read.
+   24.35 -  28.60  One night, she looked up... and caught him watching.
 
-[THE FIRST NIGHT]
-   22.70 -  29.54  Omar laughed it off. He was thirty-four, not a child, and the building was quiet.
-   29.92 -  40.51  At one in the morning, the intercom buzzed. A woman's voice, soft and polite: I live in flat twelve. I forgot my keys.
-   40.89 -  44.63  Omar checked the list. Flat twelve was on it.
-   45.01 -  47.46  He did not open the door.
+[THE FIRST NOTE]
+   29.45 -  33.84  The next morning, a folded note was stuck to his window.
+   34.22 -  39.64  You work too late, it said. In neat, looping handwriting.
+   40.02 -  47.46  Adam laughed, and wrote back: So do you. Then he taped it to his own glass.
+   47.84 -  55.71  That night, she read it... and smiled. The first time he had ever seen her smile.
 
-[THE WOMAN IN BLACK]
-   48.31 -  55.75  The next night, she was standing at the glass door, in a black coat, her face hidden by her hair.
-   56.13 -  63.40  She did not knock. She just... waited. Watching him through the glass.
-   63.78 -  67.91  Omar turned off the lobby lights, hoping she would leave.
-   68.29 -  72.92  She did not move. Not once. Not all night.
+[THE SHARED SONG]
+   56.56 -  63.88  Soon, the notes became a habit. A line a night, passed between two windows.
+   64.26 -  74.46  Then one evening, she opened her window... and hummed a song. Soft. Old. Beautiful.
+   74.84 -  79.45  Adam knew the song. His mother used to hum it while she cooked.
+   79.83 -  87.78  So he hummed it back. And for three whole minutes, the street between them... disappeared.
 
-[THE RESIDENTS]
-   73.77 -  81.43  In the morning, the woman from flat twelve came downstairs, smiling, carrying groceries.
-   81.81 -  86.63  Good morning, Omar, she said, as if nothing had happened.
-   87.01 -  94.35  But her groceries were the same bags... from three nights ago. Unopened. Rotting.
-   94.73 - 102.44  And when Omar looked at her shadow on the marble floor... it was standing still, while she walked.
+[THE DARE]
+   88.63 -  94.00  The next note was different. Shorter. Bolder.
+   94.38 - 102.97  It said: Tomorrow, eight o'clock. Cross the street. Or stay a stranger forever.
+  103.35 - 110.70  Adam stared at it until the ink blurred. He had never even spoken to her.
+  111.08 - 117.75  But his heart was beating so loud... he was sure she could hear it from her window.
 
-[THE NAMES]
-  103.29 - 107.92  That night, Omar read the list properly, for the first time.
-  108.30 - 117.68  Eleven names. Eleven flats. And at the bottom, in the old doorman's shaking handwriting, a twelfth name.
-  118.06 - 119.26  His own.
-  119.64 - 128.28  Under it, one line: he will come for the new doorman on the third night. Do not answer the door.
+[EIGHT O'CLOCK]
+  118.60 - 125.01  At eight the next evening, Adam stood at the door of his building, his hands shaking.
+  125.39 - 130.24  Across the street, her window was dark. Empty.
+  130.62 - 137.41  His chest tightened. Had he waited too long? Had she given up on him?
+  137.79 - 147.24  Then the door of her building opened... and she stepped out, in a blue dress, holding two cups of coffee.
 
-[THE THIRD NIGHT]
-  129.13 - 134.08  On the third night, the intercom buzzed at exactly midnight.
-  134.46 - 143.31  A voice Omar knew too well spoke through it. His own voice. Open the door, Omar. It is cold out here.
-  143.69 - 149.77  The woman in the black coat was standing behind him now, inside the lobby, smiling.
-  150.15 - 163.61  Omar did not open the door. He is still there, they say, every night after midnight... waiting for someone else to take the list. Would YOU open the door?
+[THE STREET BETWEEN THEM]
+  148.09 - 157.43  She walked halfway across the street... and stopped. Waiting. Daring him to meet her in the middle.
+  157.81 - 169.04  Adam crossed the last few steps, took the coffee, and finally said the words he had written a hundred times and never sent.
+  169.42 - 171.70  Hi. I am Adam.
+  172.08 - 181.75  I know, she said, smiling. I have been talking to you for a month. Now... would YOU cross the street?
 
-Speech ends at 163.61s. Then 5.2s of silence (end card). Total video length: 168.81s
+Speech ends at 181.75s. Then 5.2s of silence (end card). Total video length: 186.95s

@@ -1,18 +1,18 @@
-Build a single self-contained HTML file (inline CSS/JS, no external assets except the narration file) that plays a vertical 9:16 animated video, "THE DOORMAN'S LIST", synced to the narration audio file from this repository (narration.mp3).
+Build a single self-contained HTML file (inline CSS/JS, no external assets except the narration file) that plays a vertical 9:16 animated video, "THE WOMAN IN THE WINDOW", synced to the narration audio file from this repository (narration.mp3).
 
 TIMING - CRITICAL: script.txt contains the EXACT start and end time of every spoken sentence, measured from the real audio. Use those exact times for scene changes, caption display and every timed action. Do NOT estimate or rescale timings.
 
 Requirements:
 - Stage 1080x1920 (scale to fit), flat vector cartoon storybook style drawn with SVG/CSS/JS, warm colors, DETAILED scenes matching the scene labels in script.txt - never simple shapes on empty backgrounds.
-- Main character: the hero is Omar, a night doorman in his mid-thirties (dark uniform, tired eyes, a brass key ring on his belt); the other presence is a mysterious woman in a long black coat with dark hair hiding her face, who keeps appearing at the glass door; background figures are silent residents who walk without shadows. The hero actually MOVES: walking, breathing, turning its head, changing facial expressions (calm and bored, curious, uneasy, shocked, terrified, haunted) matched to the story beats.
+- Main character: the hero is Adam, a man in his early thirties working late in a small office above a Cairo bookshop (rolled-up sleeves, warm desk lamp, tired but kind eyes); the heroine is a graceful woman in her late twenties with long dark hair, seen through the lit window across the street, always with a book in her hands. The hero actually MOVES: walking, breathing, turning its head, changing facial expressions (tired, curious, shy, smiling, nervous, hopeful, tender and happy) matched to the story beats.
 - Play the narration audio. Display the spoken words as LARGE bold white KINETIC captions (black outline, lower-center) changing WORD BY WORD in sync with the narration within each sentence's exact time window, plus a smaller subtitle line at the very bottom with the full current sentence. One keyword per sentence in lime green.
-- Red top banner: "THE DOORMAN'S LIST", plus a small scene/time label per section from script.txt.
+- Red top banner: "THE WOMAN IN THE WINDOW", plus a small scene/time label per section from script.txt.
 - SOUND EFFECTS - synthesize ALL of them in code with the WebAudio API (oscillators, filtered noise, envelopes). NO external audio files. Mix them LOW under the narration and trigger them at the matching narration moments:
-- empty lobby ambience - low room tone with a distant clock ticking: under the whole video, very low
-- intercom buzz - harsh electric buzz: when the intercom rings at midnight
-- glass door creak - slow metallic groan: when the woman appears at the door
-- a slow heartbeat - low double thump: through the third-night reveal
-- a whispered voice - filtered breathy noise: when the voice speaks through the intercom
+- quiet Cairo night ambience - distant traffic and soft night sounds: under the whole video, very low
+- a paper note flutter - soft rustle: when a note appears on the window
+- a soft warm piano-like chime swell - gentle major tones: when she smiles and at the hand-holding moment
+- a heartbeat - soft and slow: during the dare and the crossing scene
+- street sounds fading - distant cars and a soft breeze: when the street between them disappears
 - DIRECTION (what makes this look stunning - follow it strictly):
   * Cut rhythm: a HARD CUT to a new visual beat every 2-3 seconds, timed to the narration phrases. Never hold one static composition for a whole scene; each scene contains several beats.
   * Faces are SWAPPED wholesale per beat from an expression library: draw each face as its own SVG group and switch instantly on the beat - do not morph.
@@ -24,6 +24,6 @@ Requirements:
   * One shot per sentence: the visual must illustrate the exact sentence being spoken, never a generic backdrop.
   * Establishing shots get a slow Ken Burns push-in (scale 1.0 -> 1.08).
   * In the silent end-card tail, hold a bold CTA card with the story's big question.
-- End card during the final 5.2 seconds (narration is silent then): a big bold card with the question "WOULD YOU OPEN THE DOOR?" plus "DROP YOUR ANSWER IN THE COMMENTS".
+- End card during the final 5.2 seconds (narration is silent then): a big bold card with the question "WOULD YOU CROSS THE STREET?" plus "DROP YOUR ANSWER IN THE COMMENTS".
 - Include Play/Pause and a progress bar. Everything must run by just opening the HTML file (narration.mp3 sits next to it in the repo).
 Output ONLY the complete HTML (build it as index.html).
